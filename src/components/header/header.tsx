@@ -31,6 +31,9 @@ export const Header = ({}: IHeaderProps) => {
                                 {HEADER_NOTIFICATION_TOOLTIP}
                             </Typography>
                         }
+                        disableInteractive
+                        enterDelay={300}
+                        enterNextDelay={300}
                     >
                         <IconButton size='large' color={'primary'}>
                             <Badge badgeContent={17} color='error'>

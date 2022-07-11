@@ -25,6 +25,9 @@ export const MenuItem = ({
                 </Typography>
             }
             placement='right'
+            disableInteractive
+            enterDelay={300}
+            enterNextDelay={300}
         >
             <Link to={link}>
                 <Button

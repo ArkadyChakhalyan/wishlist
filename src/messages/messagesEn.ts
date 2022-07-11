@@ -18,8 +18,8 @@ export const messagesEn = {
         home: {
             tooltip: 'Home page'
         },
-        wishLists: {
-            tooltip: 'Your wish lists'
+        wishlists: {
+            tooltip: 'Your wishlists'
         },
         shared: {
             tooltip: "Shared with me"
@@ -29,6 +29,42 @@ export const messagesEn = {
         },
         info: {
             tooltip: 'How to'
+        }
+    },
+    wishlistsPage: {
+        initial: {
+            create: {
+                text: 'Create your first wishlist',
+                modal: {
+                    title: 'Wishlist',
+                    text: 'You can change it latter in a wishlist settings'
+                }
+            }
+        },
+        wishlists: {
+            title: 'Your Wishlists',
+            menu: {
+                edit: 'Edit',
+                duplicate: 'Duplicate',
+                share: 'Share',
+                delete: 'Delete'
+            },
+            create: {
+                placeholder: 'Name',
+                defaultName: 'My Wishlist',
+                button: 'Add wishlist'
+            },
+            favorite: {
+                tooltip: {
+                    add: 'Add to favorite',
+                    remove: 'Remove from favorite'
+                }
+            }
+        }
+    },
+    wishlist: {
+        duplicate: {
+            prefix: 'Copy of '
         }
     }
 }

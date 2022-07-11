@@ -1,7 +1,7 @@
 import { ILeftPanelProps } from "./types";
 import { Stack, styled } from "@mui/material";
 import React from "react";
-import { menu } from "./constants";
+import { LEFT_PANEL_MENU } from "./constants";
 import CardGiftcardRoundedIcon from '@mui/icons-material/CardGiftcardRounded';
 import { MenuItem } from "./menuItem";
 import { useLocation } from "react-router-dom";
@@ -17,7 +17,7 @@ export const LeftPanel = ({}: ILeftPanelProps) => {
                 width={1}
                 sx={{
                     alignItems: 'center',
-                    pt: 2
+                    pt: 1.5
                 }}
             >
                 <CardGiftcardRoundedIcon
@@ -29,7 +29,7 @@ export const LeftPanel = ({}: ILeftPanelProps) => {
                 />
                 <Stack spacing={1}>
                     {
-                        menu.map((item, index) => (
+                        LEFT_PANEL_MENU.map((item, index) => (
                             <MenuItem
                                 key={index}
                                 active={item.link === location.pathname}

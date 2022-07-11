@@ -39,6 +39,9 @@ export const Account = ({}: IAccountProps) => {
                         {HEADER_ACCOUNT_TOOLTIP}
                     </Typography>
                 }
+                disableInteractive
+                enterDelay={300}
+                enterNextDelay={300}
             >
                 <IconButton onClick={onOpen} sx={{ p: 0, height: theme.spacing(5) }}>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

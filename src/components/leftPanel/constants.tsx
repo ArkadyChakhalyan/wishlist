@@ -1,35 +1,35 @@
-import { messagesEn } from "../../messages/messagesEn";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import FormatListBulletedRoundedIcon from "@mui/icons-material/FormatListBulletedRounded";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import DateRangeRoundedIcon from "@mui/icons-material/DateRangeRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import { messages } from "../app/constants";
 
-export const menu = [
+export const LEFT_PANEL_MENU = [
     {
-        tooltip: messagesEn.leftPanel.home.tooltip,
+        tooltip: messages.leftPanel.home.tooltip,
         icon: <HomeRoundedIcon />,
         link: '/home'
     },
     {
-        tooltip: messagesEn.leftPanel.wishLists.tooltip,
+        tooltip: messages.leftPanel.wishlists.tooltip,
         icon: <FormatListBulletedRoundedIcon />,
         link: '/wishlists',
         notifications: 4
     },
     {
-        tooltip: messagesEn.leftPanel.shared.tooltip,
+        tooltip: messages.leftPanel.shared.tooltip,
         icon: <PeopleAltRoundedIcon />,
         link: '/shared',
         notifications: 2
     },
     {
-        tooltip: messagesEn.leftPanel.calendar.tooltip,
+        tooltip: messages.leftPanel.calendar.tooltip,
         icon: <DateRangeRoundedIcon />,
         link: '/calendar'
     },
     {
-        tooltip: messagesEn.leftPanel.info.tooltip,
+        tooltip: messages.leftPanel.info.tooltip,
         icon: <InfoRoundedIcon />,
         link: '/info'
     },

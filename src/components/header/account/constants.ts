@@ -1,5 +1,5 @@
-import { messagesEn } from "../../../messages/messagesEn";
+import { messages } from "../../app/constants";
 
-export const HEADER_ACCOUNT_SETTINGS_ACCOUNT = messagesEn.topBar.account.settings.profile;
-export const HEADER_ACCOUNT_SETTINGS_LOGOUT = messagesEn.topBar.account.settings.logout;
-export const HEADER_ACCOUNT_TOOLTIP = messagesEn.topBar.account.tooltip;
+export const HEADER_ACCOUNT_SETTINGS_ACCOUNT = messages.topBar.account.settings.profile;
+export const HEADER_ACCOUNT_SETTINGS_LOGOUT = messages.topBar.account.settings.logout;
+export const HEADER_ACCOUNT_TOOLTIP = messages.topBar.account.tooltip;

@@ -1,3 +1,3 @@
-import { messagesEn } from "../../messages/messagesEn";
+import { messages } from "../app/constants";
 
-export const HEADER_NOTIFICATION_TOOLTIP = messagesEn.topBar.notifications.tooltip;
+export const HEADER_NOTIFICATION_TOOLTIP = messages.topBar.notifications.tooltip;

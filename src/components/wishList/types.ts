@@ -1,3 +1,3 @@
-export interface IWishListProps {
+export interface IWishlistProps {
 
 }

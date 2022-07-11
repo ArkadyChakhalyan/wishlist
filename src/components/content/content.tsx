@@ -1,31 +1,30 @@
 import { IContentProps } from "./types";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { WishList } from "../wishList";
-import { Container } from "@mui/material";
+import { Wishlist } from "../wishList";
+import { Box } from "@mui/material";
 import { theme } from "../../styles/theme";
-import { WishListsPage } from "./pages/wishListsPage";
+import { WishlistsPage } from "./pages/wishlistsPage";
 
 export const Content = ({}: IContentProps) => {
     return (
-        <Container
+        <Box
             sx={{
                 position: 'absolute',
                 left: theme.spacing(9),
                 top: theme.spacing(8),
                 width: `calc(100% - ${theme.spacing(9)})`,
-                height: `calc(100% - ${theme.spacing(8)})`,
-                p: 2
+                height: `calc(100% - ${theme.spacing(8)})`
             }}
         >
             <Routes>
-                <Route path='/home' element={<WishList />}/>
-                <Route path='/wishlists' element={<WishListsPage />}/>
-                <Route path='/shared' element={<WishList />}/>
-                <Route path='/calendar' element={<WishList />}/>
-                <Route path='/info' element={<WishList />}/>
+                <Route path='/home' element={<Wishlist />}/>
+                <Route path='/wishlists' element={<WishlistsPage />}/>
+                <Route path='/shared' element={<Wishlist />}/>
+                <Route path='/calendar' element={<Wishlist />}/>
+                <Route path='/info' element={<Wishlist />}/>
             </Routes>
-        </Container>
+        </Box>
     );
 }
 
