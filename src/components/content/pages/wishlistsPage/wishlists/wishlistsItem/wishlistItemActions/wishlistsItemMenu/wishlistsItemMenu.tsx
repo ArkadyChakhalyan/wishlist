@@ -1,4 +1,4 @@
-import { IWishlistsItemMenuProps } from "./types";
+import { TWishlistsItemMenuProps } from "./types";
 import { ListItemIcon, ListItemText, Menu, MenuItem, Paper } from "@mui/material";
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
@@ -11,15 +11,16 @@ import {
     WISHLIST_ITEM_MENU_SHARE
 } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
-import { IAppState } from "../../../../../../store/types";
-import { getWishlist } from "../../../../../../store/reducers/wishlistsReducer/selectors/getWishlist";
-import { addWishlistAC, deleteWishlistAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { IAppState } from "../../../../../../../../store/types";
+import { getWishlist } from "../../../../../../../../store/reducers/wishlistsReducer/selectors/getWishlist";
+import { addWishlistAC, deleteWishlistAC } from "../../../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { FunctionComponent } from "react";
 
-export const WishlistsItemMenu = ({
+export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
     anchor,
     id,
     onClose
-}:IWishlistsItemMenuProps) => {
+}) => {
     const dispatch = useDispatch();
 
     const wishlistToCopy = useSelector((state: IAppState) => getWishlist(state, id));
@@ -28,6 +29,7 @@ export const WishlistsItemMenu = ({
         const wishlist = {
             ...wishlistToCopy,
             name: WISHLIST_ITEM_MENU_DUPLICATE_PREFIX + wishlistToCopy!.name,
+            favorite: false,
             id: Date.now()
         };
         dispatch(addWishlistAC(wishlist));

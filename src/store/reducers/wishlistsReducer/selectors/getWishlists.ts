@@ -4,5 +4,5 @@ import { IWishlist } from "../types";
 export const getWishlists = (
     state: IAppState
 ): IWishlist[] => {
-    return state.wishlists;
+    return state.wishlists.wishlists;
 }

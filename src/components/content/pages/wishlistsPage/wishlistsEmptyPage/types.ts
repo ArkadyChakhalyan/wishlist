@@ -1,1 +1,1 @@
-export interface IWishlistsEmptyPageProps {}
+export type TWishlistsEmptyPageProps = {}

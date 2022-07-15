@@ -1,10 +1,10 @@
-import { IAccountProps } from "./types";
-import { alpha, Avatar, IconButton, Menu, MenuItem, Stack, Tooltip, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { TAccountProps } from "./types";
+import { alpha, Avatar, IconButton, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import React, { FunctionComponent, useState } from "react";
 import { HEADER_ACCOUNT_SETTINGS_ACCOUNT, HEADER_ACCOUNT_SETTINGS_LOGOUT, HEADER_ACCOUNT_TOOLTIP } from "./constants";
 import { theme } from "../../../styles/theme";
 
-export const Account = ({}: IAccountProps) => {
+export const Account: FunctionComponent<TAccountProps> = () => {
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
 
     const onOpen = (e: React.MouseEvent<HTMLElement>) => {

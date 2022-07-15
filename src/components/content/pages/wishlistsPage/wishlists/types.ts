@@ -1,5 +1,6 @@
 import { IWishlist } from "../../../../../store/reducers/wishlistsReducer/types";
 
-export interface IWishlistsProps {
+export type TWishlistsProps = {
     wishlists: IWishlist[];
+    folded: boolean;
 }

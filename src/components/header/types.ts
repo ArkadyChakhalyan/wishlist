@@ -1,1 +1,1 @@
-export interface IHeaderProps {}
+export type THeaderProps = {}

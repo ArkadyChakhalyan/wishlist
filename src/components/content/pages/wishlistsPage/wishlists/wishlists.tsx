@@ -1,122 +1,79 @@
-import { IWishlistsProps } from "./types";
-import {
-    Box,
-    Button,
-    IconButton,
-    List,
-    ListItem,
-    ListItemSecondaryAction,
-    Stack,
-    Tooltip,
-    Typography
-} from "@mui/material";
+import { TWishlistsProps } from "./types";
+import { alpha, Box, Button, IconButton, List } from "@mui/material";
 import { theme } from "../../../../../styles/theme";
-import { WishlistsItemMenu } from "./wishlistsItemMenu";
-import React, { useState } from "react";
+import React, { FunctionComponent } from "react";
 import { WishlistsItem } from "./wishlistsItem";
-import { TWishlistId } from "../../../../../store/reducers/wishlistsReducer/types";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
-import { WISHLISTS_FAVORITE_ADD_TOOLTIP, WISHLISTS_FAVORITE_REMOVE_TOOLTIP, WISHLISTS_TITLE } from "./constants";
-import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
-import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
-import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
-import { yellow } from "@mui/material/colors";
 import { useDispatch } from "react-redux";
-import { toggleWishlistFavoriteAC } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { DEFAULT_WISHLIST } from "../../../../wishlist/constants";
+import { addWishlistAC } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { WishlistsHeader } from "./wishlistsHeader";
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import { useNavigate } from "react-router-dom";
 
-export const Wishlists = ({
-    wishlists
-}:IWishlistsProps) => {
+export const Wishlists: FunctionComponent<TWishlistsProps> = ({
+    wishlists,
+    folded
+}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const [anchor, setAnchor] = useState<null | HTMLElement>(null);
-    const [activeMenuListId, setActiveMenuListId] = useState<TWishlistId>(0);
+    const onAdd = () => {
+        const id = Date.now();
 
-    const onMenuOpen = (
-        e: React.MouseEvent<HTMLButtonElement>,
-        id: TWishlistId
-    ) => {
-        setAnchor(e.currentTarget);
-        setActiveMenuListId(id);
+        const wishlist = {
+            ...DEFAULT_WISHLIST,
+            id
+        };
+
+        dispatch(addWishlistAC(wishlist));
+        navigate(`${id}`);
     };
 
-    const onMenuClose = () => {
-        setAnchor(null);
-    };
+    const containerStyle = {
+        width: folded ? theme.spacing(8) : theme.spacing(37),
+        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
+    }
 
-    const onToggleFavorite = (id: TWishlistId) => {
-        dispatch(toggleWishlistFavoriteAC(id));
+    const listStyle = {
+        py: 0,
+        maxHeight: `calc(100% - ${folded ? theme.spacing(14.25) : theme.spacing(12.25)})`,
+        overflow: 'auto'
     };
 
     return (
-        <Box
-            sx={{
-                width: theme.spacing(37),
-            }}
-        >
-            <Stack direction='row' sx={{ p: 2, pb: 0 }}>
-                <Typography variant='h6'>
-                    {WISHLISTS_TITLE}
-                </Typography>
-            </Stack>
-            <List sx={{ pb: 0 }}>
+        <Box sx={containerStyle}>
+            <WishlistsHeader folded={folded} />
+            <List sx={listStyle}>
                 {
-                    wishlists.map((wishlist) => {
-                        const { id, favorite } = wishlist;
-                        return (
-                            <ListItem
-                                key={id}
-                                disablePadding
-                                sx={{ p: 0 }}
-                            >
-                                <WishlistsItem wishlist={wishlist} />
-                                <ListItemSecondaryAction sx={{ right: 0 }}>
-                                    <Stack direction='row' spacing={-1}>
-                                        <Tooltip
-                                            title={
-                                                <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                                                    {
-                                                        favorite ?
-                                                            WISHLISTS_FAVORITE_REMOVE_TOOLTIP
-                                                            : WISHLISTS_FAVORITE_ADD_TOOLTIP
-                                                    }
-                                                </Typography>
-                                            }
-                                            disableInteractive
-                                            enterDelay={300}
-                                            enterNextDelay={300}
-                                        >
-                                            <IconButton onClick={() => onToggleFavorite(id)}>
-                                                {
-                                                    favorite ?
-                                                        <StarRateRoundedIcon sx={{ color: yellow[600] }} />
-                                                        : <StarBorderRoundedIcon />
-                                                }
-                                            </IconButton>
-                                        </Tooltip>
-                                        <IconButton
-                                            onClick={(e) => onMenuOpen(e, id)}
-                                        >
-                                            <MoreVertRoundedIcon />
-                                        </IconButton>
-                                    </Stack>
-                                </ListItemSecondaryAction>
-                            </ListItem>
-                        );
-                    })
+                    wishlists.map((wishlist) => (
+                        <WishlistsItem
+                            key={wishlist.id}
+                            wishlist={wishlist}
+                            folded={folded}
+                        />
+                    ))
                 }
             </List>
-            <Button
-                fullWidth
-                size='large'
-            >
-                {WISHLISTS_CREATE_BUTTON}
-            </Button>
-            <WishlistsItemMenu
-                anchor={anchor}
-                onClose={onMenuClose}
-                id={activeMenuListId}
-            />
+            {
+                folded ?
+                    <IconButton
+                        onClick={onAdd}
+                        color='primary'
+                        sx={{ ml: 0.75, my: 0.5 }}
+                    >
+                        <AddRoundedIcon fontSize='large' />
+                    </IconButton>
+                    :
+                    <Button
+                        fullWidth
+                        size='large'
+                        onClick={onAdd}
+                        sx={{ borderRadius: 0 }}
+                    >
+                        {WISHLISTS_CREATE_BUTTON}
+                    </Button>
+            }
         </Box>
     );
 }

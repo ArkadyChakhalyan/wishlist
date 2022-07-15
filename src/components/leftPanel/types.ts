@@ -1,1 +1,1 @@
-export interface ILeftPanelProps {}
+export type TLeftPanelProps = {}

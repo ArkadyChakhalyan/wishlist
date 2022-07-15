@@ -1,17 +1,17 @@
-import { IMenuItemProps } from "./types";
+import { TMenuItemProps } from "./types";
 import { alpha, Badge, IconButton, IconButtonProps, styled, Tooltip, Typography } from "@mui/material";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { theme } from "../../../styles/theme";
 import { Link } from "react-router-dom";
 
-export const MenuItem = ({
+export const MenuItem: FunctionComponent<TMenuItemProps> = ({
     active,
     icon,
     notifications,
     link,
     onClick,
     tooltip
-}: IMenuItemProps) => {
+}) => {
     const style = active ? {
         color: alpha(theme.palette.common.white, 1),
         backgroundColor: alpha(theme.palette.common.white, 0.1),

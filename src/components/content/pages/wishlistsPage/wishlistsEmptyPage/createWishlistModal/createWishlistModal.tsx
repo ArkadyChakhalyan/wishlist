@@ -1,21 +1,21 @@
-import { ICreateWishlistModalProps } from "./types";
+import { TCreateWishlistModalProps } from "./types";
 import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
 import { theme } from "../../../../../../styles/theme";
 import {
     DEFAULT_WISHLIST,
     WISHLISTS_CREATE_PLACEHOLDER,
     WISHLISTS_DEFAULT_NAME
-} from "../../../../../wishList/constants";
-import { useEffect, useRef, useState } from "react";
+} from "../../../../../wishlist/constants";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { WISHLISTS_PAGE_EMPTY_CREATE_MODAL_TEXT, WISHLISTS_PAGE_EMPTY_CREATE_MODAL_TITLE } from "./constants";
 import { useDispatch } from "react-redux";
 import { addWishlistAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { WISHLISTS_CREATE_BUTTON } from "../../constants";
 
-export const CreateWishlistModal = ({
+export const CreateWishlistModal: FunctionComponent<TCreateWishlistModalProps> = ({
     anchor,
     onClose
-}:ICreateWishlistModalProps) => {
+}) => {
     const dispatch = useDispatch();
 
     const [name, setName] = useState(WISHLISTS_DEFAULT_NAME);

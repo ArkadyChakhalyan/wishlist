@@ -1,4 +1,4 @@
-export interface IMenuItemProps {
+export type TMenuItemProps = {
     active?: boolean;
     icon: JSX.Element;
     notifications?: number;

@@ -1,1 +1,1 @@
-export interface IAccountProps {}
+export type TAccountProps = {}

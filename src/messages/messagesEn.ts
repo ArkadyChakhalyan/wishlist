@@ -39,6 +39,9 @@ export const messagesEn = {
                     title: 'Wishlist',
                     text: 'You can change it latter in a wishlist settings'
                 }
+            },
+            open: {
+                text: 'Choose wishlist from the list\nor create a new one'
             }
         },
         wishlists: {

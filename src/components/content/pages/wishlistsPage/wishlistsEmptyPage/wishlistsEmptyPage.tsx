@@ -1,13 +1,13 @@
-import { IWishlistsEmptyPageProps } from "./types";
+import { TWishlistsEmptyPageProps } from "./types";
 import { alpha, Button, Stack, Typography } from "@mui/material";
 import { WISHLISTS_PAGE_EMPTY_CREATE_TEXT } from "./constants";
 import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded';
 import { theme } from "../../../../../styles/theme";
-import { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { CreateWishlistModal } from "./createWishlistModal";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
 
-export const WishlistsEmptyPage = ({}:IWishlistsEmptyPageProps) => {
+export const WishlistsEmptyPage: FunctionComponent<TWishlistsEmptyPageProps> = () => {
     const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
 
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {

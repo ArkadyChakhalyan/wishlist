@@ -5,7 +5,7 @@ export const getWishlist = (
     state: IAppState,
     id: TWishlistId
 ) => {
-    return state.wishlists.find((wishlist: IWishlist) => {
+    return state.wishlists.wishlists.find((wishlist: IWishlist) => {
         return wishlist.id === id;
     });
 }

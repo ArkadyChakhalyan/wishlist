@@ -1,5 +1,6 @@
-import { IWishlist, TWishlistId } from "../../../../../../store/reducers/wishlistsReducer/types";
+import { IWishlist } from "../../../../../../store/reducers/wishlistsReducer/types";
 
-export interface IWishlistsItemProps {
+export type TWishlistsItemProps = {
     wishlist: IWishlist;
+    folded: boolean;
 }

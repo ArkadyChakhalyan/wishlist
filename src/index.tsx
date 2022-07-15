@@ -15,7 +15,7 @@ root.render(
         <Provider store={store}>
             <Browser>
                 <ThemeProvider theme={theme}>
-                    <GlobalStyles styles={{ body: { background: alpha(theme.palette.primary.light, 0.05), margin: 0 }  }} />
+                    <GlobalStyles styles={{ body: { background: alpha(theme.palette.common.black, 0.03), margin: 0 }  }} />
                     <App />
                 </ThemeProvider>
             </Browser>

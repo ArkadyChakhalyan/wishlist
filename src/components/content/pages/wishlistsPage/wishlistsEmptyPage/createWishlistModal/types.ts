@@ -1,4 +1,4 @@
-export interface ICreateWishlistModalProps {
+export type TCreateWishlistModalProps = {
     anchor: HTMLElement | null;
     onClose: () => void;
 }

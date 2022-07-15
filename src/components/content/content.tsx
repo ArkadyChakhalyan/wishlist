@@ -1,12 +1,11 @@
-import { IContentProps } from "./types";
-import React from "react";
+import { TContentProps } from "./types";
+import React, { FunctionComponent } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Wishlist } from "../wishList";
 import { Box } from "@mui/material";
 import { theme } from "../../styles/theme";
 import { WishlistsPage } from "./pages/wishlistsPage";
 
-export const Content = ({}: IContentProps) => {
+export const Content: FunctionComponent<TContentProps> = () => {
     return (
         <Box
             sx={{
@@ -18,11 +17,13 @@ export const Content = ({}: IContentProps) => {
             }}
         >
             <Routes>
-                <Route path='/home' element={<Wishlist />}/>
-                <Route path='/wishlists' element={<WishlistsPage />}/>
-                <Route path='/shared' element={<Wishlist />}/>
-                <Route path='/calendar' element={<Wishlist />}/>
-                <Route path='/info' element={<Wishlist />}/>
+                <Route path='home' element={<></>}/>
+                <Route path='wishlists' element={<WishlistsPage />}>
+                    <Route path=':id' element={<WishlistsPage />} />
+                </Route>
+                <Route path='shared' element={<></>}/>
+                <Route path='calendar' element={<></>}/>
+                <Route path='info' element={<></>}/>
             </Routes>
         </Box>
     );

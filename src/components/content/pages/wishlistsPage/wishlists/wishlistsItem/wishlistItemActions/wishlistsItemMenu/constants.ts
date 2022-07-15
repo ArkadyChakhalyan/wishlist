@@ -1,4 +1,4 @@
-import { messages } from "../../../../../app/constants";
+import { messages } from "../../../../../../../app/constants";
 
 export const WISHLIST_ITEM_MENU_EDIT = messages.wishlistsPage.wishlists.menu.edit;
 export const WISHLIST_ITEM_MENU_SHARE = messages.wishlistsPage.wishlists.menu.share;

@@ -1,1 +1,1 @@
-export interface IAppProps {}
+export type TAppProps = {}

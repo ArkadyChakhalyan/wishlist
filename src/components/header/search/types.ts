@@ -1,1 +1,1 @@
-export interface ITopBarSearchProps {}
+export type TTopBarSearchProps = {}

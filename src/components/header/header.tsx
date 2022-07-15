@@ -1,12 +1,12 @@
-import { IHeaderProps } from "./types";
+import { THeaderProps } from "./types";
 import { alpha, Badge, IconButton, Stack, styled, Tooltip, Typography } from "@mui/material";
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Account } from "./account";
 import { HEADER_NOTIFICATION_TOOLTIP } from "./constants";
 import { TopBarSearch } from "./search";
 
-export const Header = ({}: IHeaderProps) => {
+export const Header: FunctionComponent<THeaderProps> = () => {
     return (
         <TopBar>
             <Stack

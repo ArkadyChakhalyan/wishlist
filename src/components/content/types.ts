@@ -1,1 +1,1 @@
-export interface IContentProps {}
+export type TContentProps = {}
