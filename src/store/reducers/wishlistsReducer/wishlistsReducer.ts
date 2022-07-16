@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IWishlist, TWishlistId, TWishlistsState } from "./types";
+import { IWishlist, IWishlistItem, TWishId, TWishlistId, TWishlistsState } from "./types";
 
 const initialState: TWishlistsState = {
     wishlists: [],
@@ -20,6 +20,19 @@ const editWishlist = (
             ...wishlists.slice(idx + 1)
         ]
     };
+}
+
+const editWishlistItems = (
+    state: TWishlistsState,
+    wishlistId: TWishlistId,
+    wishlistItems: IWishlistItem[]
+): TWishlistsState => {
+    const wishlist = getWishlist(state, wishlistId);
+
+    return editWishlist(state,{
+        ...wishlist,
+        items: wishlistItems
+    });
 }
 
 const getWishlist = (
@@ -60,22 +73,18 @@ export const wishlistsSlice = createSlice({
 
             const wishlist = getWishlist(state, id);
 
-            if (wishlist) {
-                editWishlist(state,{
-                    ...wishlist,
-                    name
-                });
-            }
+            editWishlist(state,{
+                ...wishlist,
+                name
+            });
         },
         toggleWishlistFavoriteAC: (state, action: PayloadAction<TWishlistId>) => {
             const wishlist = getWishlist(state, action.payload);
 
-            if (wishlist) {
-                return editWishlist(state,{
-                    ...wishlist,
-                    favorite: !wishlist.favorite
-                });
-            }
+            return editWishlist(state,{
+                ...wishlist,
+                favorite: !wishlist.favorite
+            });
         },
         sortByFavoriteAC: (state) => {
             return {
@@ -83,12 +92,49 @@ export const wishlistsSlice = createSlice({
                 wishlists: [...state.wishlists].sort((a, b) => a.favorite === b.favorite ? 0 : b.favorite ? 1 : -1)
             };
         },
-        toggleFolded: (state) => {
+        toggleFoldedAC: (state) => {
             return {
                 ...state,
                 folded: !state.folded
             }
-        }
+        },
+        addWishlistItemAC: (state, action: PayloadAction<{ id: TWishlistId, item: IWishlistItem }>) => {
+            const { item, id } = action.payload;
+
+            const wishlistItems = getWishlist(state, id).items;
+
+            return editWishlistItems(state, id, [
+                item,
+                ...wishlistItems
+            ]);
+        },
+        deleteWishlistItemAC: (state, action: PayloadAction<{ id: TWishlistId, itemId: TWishId }>) => {
+            const { itemId, id } = action.payload;
+
+            const wishlistItems = getWishlist(state, id).items;
+            const idx = wishlistItems.findIndex(({ id }) => id === itemId);
+
+            const newWishlistItems = [
+                ...wishlistItems.slice(0, idx),
+                ...wishlistItems.slice(idx + 1)
+            ];
+
+            return editWishlistItems(state, id, newWishlistItems);
+        },
+        editWishlistItemAC: (state, action: PayloadAction<{ id: TWishlistId, item: IWishlistItem }>) => {
+            const { item, id } = action.payload;
+
+            const wishlistItems = getWishlist(state, id).items;
+            const idx = wishlistItems.findIndex(({ id }) => id === item.id);
+
+            const newWishlistItems = [
+                ...wishlistItems.slice(0, idx),
+                item,
+                ...wishlistItems.slice(idx + 1)
+            ];
+
+            return editWishlistItems(state, id, newWishlistItems);
+        },
     },
 })
 
@@ -98,7 +144,10 @@ export const {
     toggleWishlistFavoriteAC,
     editWishlistNameAC,
     sortByFavoriteAC,
-    toggleFolded
+    addWishlistItemAC,
+    deleteWishlistItemAC,
+    editWishlistItemAC,
+    toggleFoldedAC
 } = wishlistsSlice.actions;
 
 export default wishlistsSlice.reducer;

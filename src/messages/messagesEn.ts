@@ -68,6 +68,11 @@ export const messagesEn = {
     wishlist: {
         duplicate: {
             prefix: 'Copy of '
+        },
+        add: {
+            tooltip: 'Add new wish',
+            button: 'Make a wish',
+            text: 'Add your first wish to the list',
         }
     }
 }

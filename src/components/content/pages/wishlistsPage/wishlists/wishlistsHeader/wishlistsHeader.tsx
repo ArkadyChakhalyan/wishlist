@@ -1,11 +1,12 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { alpha, IconButton, Stack, Typography } from "@mui/material";
 import { WISHLISTS_TITLE } from "./constants";
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import UnfoldLessRoundedIcon from '@mui/icons-material/UnfoldLessRounded';
 import React, { FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
-import { toggleFolded } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { toggleFoldedAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { TWishlistsHeaderProps } from "./types";
+import { theme } from "../../../../../../styles/theme";
 
 export const WishlistsHeader: FunctionComponent<TWishlistsHeaderProps> = ({
     folded
@@ -13,7 +14,7 @@ export const WishlistsHeader: FunctionComponent<TWishlistsHeaderProps> = ({
     const dispatch = useDispatch();
 
     const onClick = () => {
-        dispatch(toggleFolded());
+        dispatch(toggleFoldedAC());
     };
 
     const containerStyle = {
@@ -22,7 +23,8 @@ export const WishlistsHeader: FunctionComponent<TWishlistsHeaderProps> = ({
         pt: 1,
         pb: 0,
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
     };
 
     return (

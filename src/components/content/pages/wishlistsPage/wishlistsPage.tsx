@@ -37,15 +37,12 @@ export const WishlistsPage: FunctionComponent<TWishlistsPageProps> = () => {
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     height: 1,
-                                    width: `calc(100% - ${folded ? theme.spacing(15.25) : theme.spacing(13.25)})` // wishlists width
+                                    width: `calc(100% - ${folded ? theme.spacing(8) : theme.spacing(13.25)})` // wishlists width
                                 }}
                             >
                                 {
                                     openedWishlist ?
-                                        <Wishlist
-                                            id={openedWishlist.id}
-                                            items={openedWishlist.items || []}
-                                        />
+                                        <Wishlist wishlist={openedWishlist} />
                                         :
                                         <Typography textAlign='center' sx={{ whiteSpace: 'pre-wrap' }}>
                                             {WISHLISTS_EMPTY_TEXT}

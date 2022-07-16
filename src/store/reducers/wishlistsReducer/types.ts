@@ -6,10 +6,10 @@ export type TWishlistsState = {
 export interface IWishlist {
     id: TWishlistId;
     name: string;
-    color?: string;
-    icon?: EWishlistIcon;
-    favorite?: boolean;
-    items?: IWishlistItem[];
+    color: string;
+    icon: EWishlistIcon;
+    favorite: boolean;
+    items: IWishlistItem[];
 }
 
 export interface IWishlistItem {

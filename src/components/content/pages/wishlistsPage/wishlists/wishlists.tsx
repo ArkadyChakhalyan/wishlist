@@ -31,13 +31,14 @@ export const Wishlists: FunctionComponent<TWishlistsProps> = ({
     };
 
     const containerStyle = {
-        width: folded ? theme.spacing(8) : theme.spacing(37),
-        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
+        width: folded ? theme.spacing(8) : theme.spacing(40),
+        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`,
+        overflow: 'hidden'
     }
 
     const listStyle = {
         py: 0,
-        maxHeight: `calc(100% - ${folded ? theme.spacing(14.25) : theme.spacing(12.25)})`,
+        maxHeight: `calc(100% - ${folded ? theme.spacing(14) : theme.spacing(13)})`,
         overflow: 'auto'
     };
 
@@ -55,25 +56,36 @@ export const Wishlists: FunctionComponent<TWishlistsProps> = ({
                     ))
                 }
             </List>
-            {
-                folded ?
-                    <IconButton
-                        onClick={onAdd}
-                        color='primary'
-                        sx={{ ml: 0.75, my: 0.5 }}
-                    >
-                        <AddRoundedIcon fontSize='large' />
-                    </IconButton>
-                    :
-                    <Button
-                        fullWidth
-                        size='large'
-                        onClick={onAdd}
-                        sx={{ borderRadius: 0 }}
-                    >
-                        {WISHLISTS_CREATE_BUTTON}
-                    </Button>
-            }
+            <Box
+                sx={{
+                    height: 1,
+                    boxShadow: `-4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
+                }}
+            >
+                {
+                    folded ?
+                        <IconButton
+                            onClick={onAdd}
+                            color='primary'
+                            size='large'
+                            sx={{ ml: 1, my: 0.5 }}
+                        >
+                            <AddRoundedIcon />
+                        </IconButton>
+                        :
+                        <Button
+                            fullWidth
+                            size='large'
+                            onClick={onAdd}
+                            sx={{
+                                height: theme.spacing(6),
+                                borderRadius: 0
+                            }}
+                        >
+                            {WISHLISTS_CREATE_BUTTON}
+                        </Button>
+                }
+            </Box>
         </Box>
     );
 }

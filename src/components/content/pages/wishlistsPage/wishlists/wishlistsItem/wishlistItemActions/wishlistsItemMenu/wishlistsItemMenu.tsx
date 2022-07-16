@@ -6,14 +6,18 @@ import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 import ReplyRoundedIcon from '@mui/icons-material/ReplyRounded';
 import {
     WISHLIST_ITEM_MENU_DELETE,
-    WISHLIST_ITEM_MENU_DUPLICATE, WISHLIST_ITEM_MENU_DUPLICATE_PREFIX,
+    WISHLIST_ITEM_MENU_DUPLICATE,
+    WISHLIST_ITEM_MENU_DUPLICATE_PREFIX,
     WISHLIST_ITEM_MENU_EDIT,
     WISHLIST_ITEM_MENU_SHARE
 } from "./constants";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppState } from "../../../../../../../../store/types";
 import { getWishlist } from "../../../../../../../../store/reducers/wishlistsReducer/selectors/getWishlist";
-import { addWishlistAC, deleteWishlistAC } from "../../../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import {
+    addWishlistAC,
+    deleteWishlistAC
+} from "../../../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { FunctionComponent } from "react";
 
 export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({

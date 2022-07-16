@@ -1,3 +1,3 @@
-export interface IWishlistItemProps {
+export type TWishlistItemProps = {
 
 }
