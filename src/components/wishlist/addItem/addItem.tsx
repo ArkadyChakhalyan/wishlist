@@ -1,5 +1,5 @@
 import { TAddItemProps } from "./types";
-import { alpha, IconButton, styled, Tooltip, Typography } from "@mui/material";
+import { alpha, Box, IconButton, styled, Tooltip, Typography } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { theme } from "../../../styles/theme";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -28,20 +28,22 @@ export const AddItem: FunctionComponent<TAddItemProps> = ({
         <>
             {
                 isEmpty ?
-                    <Empty
-                        icon={
-                            <AutoAwesomeRoundedIcon
-                                sx={{
-                                    width: theme.spacing(18),
-                                    height: theme.spacing(18),
-                                    color: alpha(theme.palette.primary.main, 0.15)
-                                }}
-                            />
-                        }
-                        text={ADD_WISHLIST_ITEM_TEXT}
-                        buttonText={ADD_WISHLIST_ITEM_BUTTON}
-                        onClick={onAdd}
-                    />
+                    <Box sx={{ height: `calc(100% - ${theme.spacing(10)})` }}>
+                        <Empty
+                            icon={
+                                <AutoAwesomeRoundedIcon
+                                    sx={{
+                                        width: theme.spacing(18),
+                                        height: theme.spacing(18),
+                                        color: alpha(theme.palette.primary.main, 0.15)
+                                    }}
+                                />
+                            }
+                            text={ADD_WISHLIST_ITEM_TEXT}
+                            buttonText={ADD_WISHLIST_ITEM_BUTTON}
+                            onClick={onAdd}
+                        />
+                    </Box>
                     :
                     <Tooltip
                         title={
@@ -72,20 +74,18 @@ const AddButton = styled(IconButton)(({ theme }) => ({
     right: theme.spacing(5),
     height: theme.spacing(6),
     width: theme.spacing(6),
-    background: theme.palette.common.white,
-    color: theme.palette.primary.main,
-    border: `2px solid`,
-    borderColor: theme.palette.primary.main,
+    background: alpha(theme.palette.primary.main, 0.9),
+    color: theme.palette.common.white,
     '&:hover': {
-        background: alpha(theme.palette.primary.main, 0.9),
+        background: theme.palette.primary.main,
         color: theme.palette.common.white
     },
     '&:focus': {
-        background: alpha(theme.palette.primary.main, 0.9),
+        background: theme.palette.primary.main,
         color: theme.palette.common.white
     },
     '&:active': {
-        background: alpha(theme.palette.primary.main, 0.9),
+        background: theme.palette.primary.main,
         color: theme.palette.common.white
     }
 }))

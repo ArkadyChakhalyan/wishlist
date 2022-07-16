@@ -14,7 +14,8 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
         height: theme.spacing(10),
         width: `calc(100% - ${theme.spacing(6)})`,
         justifyContent: 'center',
-        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
+        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.2)}`,
+        zIndex: theme.zIndex.appBar
     };
 
     return (

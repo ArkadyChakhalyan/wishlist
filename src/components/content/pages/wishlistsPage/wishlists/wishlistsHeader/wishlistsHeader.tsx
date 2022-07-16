@@ -21,10 +21,10 @@ export const WishlistsHeader: FunctionComponent<TWishlistsHeaderProps> = ({
         p: 2,
         px: folded ? 1 : 2,
         pt: 1,
-        pb: 0,
+        pb: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
-        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.1)}`
+        boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.2)}`
     };
 
     return (

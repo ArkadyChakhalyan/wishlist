@@ -4,6 +4,7 @@ import { WishlistHeader } from "./wishlistHeader";
 import { WishlistItem } from "./wishlistItem";
 import { Stack } from "@mui/material";
 import { AddItem } from "./addItem";
+import { theme } from "../../styles/theme";
 
 export const Wishlist: FunctionComponent<TWishlistProps> = ({
     wishlist
@@ -12,8 +13,14 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
         id,
         name,
         icon,
-        color
+        color,
+        items
     } = wishlist;
+
+    const listStyle = {
+        height: `calc(100% - ${theme.spacing(10)})`,
+        overflow: 'auto'
+    };
 
     return (
         <Stack sx={{ height: 1, width: 1 }}>
@@ -23,11 +30,16 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
                 color={color}
             />
             {
-                wishlist.items && wishlist.items.map((item) => {
-                        return (
-                            <WishlistItem />
-                        );
-                })
+                !!items.length &&
+                <Stack spacing={2} sx={listStyle}>
+                    <Stack spacing={2} sx={{ p: 2, px: 4 }}>
+                        {
+                            items.map(item => (
+                                <WishlistItem item={item} wishlistId={id}/>
+                            ))
+                        }
+                    </Stack>
+                </Stack>
             }
             <AddItem
                 isEmpty={!wishlist.items.length}

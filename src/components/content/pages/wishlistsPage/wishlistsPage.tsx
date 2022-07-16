@@ -23,6 +23,7 @@ export const WishlistsPage: FunctionComponent<TWishlistsPageProps> = () => {
                 wishlists.length ?
                     <Box sx={{ p: 3, height: `calc(100% - ${theme.spacing(6)})` }}>
                         <Paper
+                            elevation={7}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'row',
