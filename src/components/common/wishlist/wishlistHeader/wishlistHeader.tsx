@@ -1,17 +1,21 @@
 import { TWishlistHeaderProps } from "./types";
 import { alpha, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { theme } from "../../../../styles/theme";
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import { WISHLIST_HEADER_SETTINGS_HIDE_TOOLTIP, WISHLIST_HEADER_SETTINGS_SHOW_TOOLTIP } from "./constants";
 import { WishlistName } from "./wishlistName";
 import { WishlistSettings } from "./wishlistSettings";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
     wishlist
 }) => {
-    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const open = location.pathname.includes('/edit');
 
     const containerStyle = {
         px: 3,
@@ -24,9 +28,13 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
         zIndex: theme.zIndex.appBar
     };
 
-    useEffect(() => {
-        setOpen(false);
-    }, [wishlist.id]);
+    const onClick = () => {
+        if (open) {
+            navigate(`${wishlist.id}`);
+        } else {
+            navigate(`${wishlist.id}/edit`);
+        }
+    };
 
     return (
         <Stack>
@@ -47,7 +55,7 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
                     enterNextDelay={300}
                     placement='left'
                 >
-                    <IconButton onClick={() => setOpen(!open)}>
+                    <IconButton onClick={onClick}>
                         {
                             open ?
                                 <ExpandMoreRoundedIcon />

@@ -27,7 +27,7 @@ export const Wishlists: FunctionComponent<TWishlistsProps> = ({
         };
 
         dispatch(addWishlistAC(wishlist));
-        navigate(`${id}`);
+        navigate(`${id}/edit`);
     };
 
     const containerStyle = {

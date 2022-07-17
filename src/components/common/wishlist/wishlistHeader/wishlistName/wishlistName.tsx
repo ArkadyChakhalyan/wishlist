@@ -7,12 +7,14 @@ import { WISHLIST_SETTINGS_NAME_LABEL, WISHLIST_SETTINGS_NAME_PLACEHOLDER } from
 import { editWishlistNameAC } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { useDispatch } from "react-redux";
 import { WishlistFavorite } from "../../../wishlistFavorite";
+import { useNavigate } from "react-router-dom";
 
 export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     wishlist,
     edit
 }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {
         icon,
@@ -24,7 +26,8 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     const [wrap, setWrap] = useState(false);
     const [newName, setNewName] = useState(name);
 
-    const ref = useRef<HTMLElement>(null);
+    const nameRef = useRef<HTMLElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewName(e.target.value);
@@ -49,13 +52,14 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
 
         if (e.key === 'Enter') {
             onBlur();
+            navigate(`${id}`);
         }
     };
 
     useEffect(() => {
         if (
-            ref.current &&
-            ref.current.offsetHeight > 24 // line height
+            nameRef.current &&
+            nameRef.current.offsetHeight > 24 // line height
         ) {
             setWrap(true);
         }
@@ -63,6 +67,17 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
 
     useEffect(() => {
         setNewName(name);
+    }, [wishlist]);
+
+    useEffect(() => {
+        const input = inputRef.current;
+        if (input) {
+            // get focus after ListItemButton in Wishlists
+            setTimeout(() => {
+                input.focus();
+                input.select();
+            }, 0);
+        }
     }, [wishlist]);
 
     return (
@@ -95,6 +110,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                         placeholder={WISHLIST_SETTINGS_NAME_PLACEHOLDER}
                         fullWidth
                         autoFocus
+                        inputRef={inputRef}
                     />
                     : wrap ?
                         <Tooltip
@@ -109,7 +125,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                         >
                             <Typography
                                 noWrap={wrap}
-                                ref={ref}
+                                ref={nameRef}
                                 variant='h6'
                                 fontSize={18}
                                 maxWidth={`calc(100% - ${theme.spacing(6)})`}
@@ -118,7 +134,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                             </Typography>
                         </Tooltip>
                         :
-                        <Typography  ref={ref} variant='h6' fontSize={18}>
+                        <Typography ref={nameRef} variant='h6' fontSize={18}>
                             {name}
                         </Typography>
             }

@@ -1,9 +1,11 @@
 import { IAppState } from "../../../types";
 import { TWishlistId } from "../types";
+import { getWishlist } from "./getWishlist";
 
 export const getWishlistFavorite = (
     state: IAppState,
-    wishlistId: TWishlistId
+    id: TWishlistId
 ): boolean => {
-    return state.wishlists.wishlists[wishlistId].favorite;
+    const { favorite } = getWishlist(state, id);
+    return favorite;
 }

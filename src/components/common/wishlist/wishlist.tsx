@@ -25,7 +25,7 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
                     <Stack spacing={2} sx={{ p: 2, px: 4 }}>
                         {
                             items.map(item => (
-                                <WishlistItem item={item} wishlistId={id}/>
+                                <WishlistItem key={item.id} item={item} wishlistId={id}/>
                             ))
                         }
                     </Stack>

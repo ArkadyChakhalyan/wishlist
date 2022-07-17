@@ -56,12 +56,6 @@ export const messagesEn = {
                 placeholder: 'Name',
                 defaultName: 'My Wishlist',
                 button: 'Add wishlist'
-            },
-            favorite: {
-                tooltip: {
-                    add: 'Add to wishlistFavorite',
-                    remove: 'Remove from wishlistFavorite'
-                }
             }
         }
     },
