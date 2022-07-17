@@ -1,7 +1,7 @@
 import { TWishlistsItemButtonProps } from "./types";
 import { Avatar, ListItemButton, Stack, Tooltip, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import { WISHLIST_ICONS } from "../../../../../../wishlist/constants";
+import { WISHLIST_ICONS } from "../../../../../../common/wishlist/constants";
 import { theme } from "../../../../../../../styles/theme";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> =
         ) {
             setWrap(true);
         }
-    }, []);
+    }, [name]);
 
     const buttonStyle = {
         p: 1,
@@ -73,7 +73,7 @@ export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> =
                                 <Tooltip
                                     title={
                                         <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                                            {wishlist.name}
+                                            {name}
                                         </Typography>
                                     }
                                     disableInteractive

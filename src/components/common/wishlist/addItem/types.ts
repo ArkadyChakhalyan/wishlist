@@ -1,4 +1,4 @@
-import { TWishlistId } from "../../../store/reducers/wishlistsReducer/types";
+import { TWishlistId } from "../../../../store/reducers/wishlistsReducer/types";
 
 export type TAddItemProps = {
     wishlistId: TWishlistId;

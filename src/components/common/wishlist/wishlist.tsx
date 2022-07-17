@@ -4,18 +4,12 @@ import { WishlistHeader } from "./wishlistHeader";
 import { WishlistItem } from "./wishlistItem";
 import { Stack } from "@mui/material";
 import { AddItem } from "./addItem";
-import { theme } from "../../styles/theme";
+import { theme } from "../../../styles/theme";
 
 export const Wishlist: FunctionComponent<TWishlistProps> = ({
     wishlist
 }) => {
-    const {
-        id,
-        name,
-        icon,
-        color,
-        items
-    } = wishlist;
+    const { id, items } = wishlist;
 
     const listStyle = {
         height: `calc(100% - ${theme.spacing(10)})`,
@@ -24,11 +18,7 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
 
     return (
         <Stack sx={{ height: 1, width: 1 }}>
-            <WishlistHeader
-                name={name}
-                icon={icon}
-                color={color}
-            />
+            <WishlistHeader wishlist={wishlist}/>
             {
                 !!items.length &&
                 <Stack spacing={2} sx={listStyle}>

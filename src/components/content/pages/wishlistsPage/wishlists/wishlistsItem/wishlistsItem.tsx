@@ -8,15 +8,13 @@ export const WishlistsItem: FunctionComponent<TWishlistsItemProps> = ({
     wishlist,
     folded
 }) => {
-    const { id, favorite } = wishlist;
-
     return (
         <ListItem
             disablePadding
             sx={{ p: 0 }}
         >
             <WishlistsItemButton wishlist={wishlist} folded={folded} />
-            {!folded && <WishlistsItemActions id={id} favorite={favorite} />}
+            {!folded && <WishlistsItemActions id={wishlist.id} />}
         </ListItem>
     );
 }

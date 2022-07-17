@@ -1,0 +1,1 @@
+export { WishlistFavorite } from './wishlistFavorite';

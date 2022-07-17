@@ -2,5 +2,4 @@ import { TWishlistId } from "../../../../../../../store/reducers/wishlistsReduce
 
 export type TWishlistsItemActionsProps = {
     id: TWishlistId;
-    favorite: boolean | undefined;
 }

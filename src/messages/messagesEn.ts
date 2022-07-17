@@ -59,13 +59,31 @@ export const messagesEn = {
             },
             favorite: {
                 tooltip: {
-                    add: 'Add to favorite',
-                    remove: 'Remove from favorite'
+                    add: 'Add to wishlistFavorite',
+                    remove: 'Remove from wishlistFavorite'
                 }
             }
         }
     },
     wishlist: {
+        header: {
+            favorite: {
+                tooltip: {
+                    add: 'Add to wishlistFavorite',
+                    remove: 'Remove from wishlistFavorite'
+                }
+            },
+            settings: {
+                tooltip: {
+                    show: 'Show settings',
+                    hide: 'Hide settings'
+                },
+                name: {
+                    label: 'Name',
+                    placeholder: 'Wishlist name...'
+                }
+            }
+        },
         duplicate: {
             prefix: 'Copy of '
         },

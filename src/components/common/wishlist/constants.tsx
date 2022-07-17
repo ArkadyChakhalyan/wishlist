@@ -1,8 +1,8 @@
-import { messages } from "../app/constants";
+import { messages } from "../../app/constants";
 import FormatListBulletedRoundedIcon from "@mui/icons-material/FormatListBulletedRounded";
-import { theme } from "../../styles/theme";
+import { theme } from "../../../styles/theme";
 import { deepPurple } from "@mui/material/colors";
-import { EWishlistIcon } from "../../store/reducers/wishlistsReducer/types";
+import { EWishlistIcon } from "../../../store/reducers/wishlistsReducer/types";
 
 export const WISHLISTS_CREATE_PLACEHOLDER = messages.wishlistsPage.wishlists.create.placeholder;
 export const WISHLISTS_DEFAULT_NAME = messages.wishlistsPage.wishlists.create.defaultName;

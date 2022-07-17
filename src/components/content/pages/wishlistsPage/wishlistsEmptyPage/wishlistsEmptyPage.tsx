@@ -6,7 +6,7 @@ import { theme } from "../../../../../styles/theme";
 import { FunctionComponent, useState } from "react";
 import { CreateWishlistModal } from "./createWishlistModal";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
-import { Empty } from "../../../../empty";
+import { Empty } from "../../../../common/empty";
 
 export const WishlistsEmptyPage: FunctionComponent<TWishlistsEmptyPageProps> = () => {
     const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);

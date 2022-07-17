@@ -1,13 +1,13 @@
 import { TAddItemProps } from "./types";
 import { alpha, Box, IconButton, styled, Tooltip, Typography } from "@mui/material";
 import React, { FunctionComponent } from "react";
-import { theme } from "../../../styles/theme";
+import { theme } from "../../../../styles/theme";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { ADD_WISHLIST_ITEM_BUTTON, ADD_WISHLIST_ITEM_TEXT, ADD_WISHLIST_ITEM_TOOLTIP } from "./constants";
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import { Empty } from "../../empty";
 import { useDispatch } from "react-redux";
-import { addWishlistItemAC } from "../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { addWishlistItemAC } from "../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 
 export const AddItem: FunctionComponent<TAddItemProps> = ({
     wishlistId,

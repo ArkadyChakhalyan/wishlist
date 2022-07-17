@@ -5,7 +5,7 @@ import React, { FunctionComponent } from "react";
 import { WishlistsItem } from "./wishlistsItem";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
 import { useDispatch } from "react-redux";
-import { DEFAULT_WISHLIST } from "../../../../wishlist/constants";
+import { DEFAULT_WISHLIST } from "../../../../common/wishlist/constants";
 import { addWishlistAC } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { WishlistsHeader } from "./wishlistsHeader";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
@@ -38,7 +38,7 @@ export const Wishlists: FunctionComponent<TWishlistsProps> = ({
 
     const listStyle = {
         py: 0,
-        maxHeight: `calc(100% - ${folded ? theme.spacing(14) : theme.spacing(13)})`,
+        maxHeight: `calc(100% - ${folded ? theme.spacing(15) : theme.spacing(14)})`,
         overflow: 'auto'
     };
 

@@ -73,7 +73,7 @@ export const wishlistsSlice = createSlice({
 
             const wishlist = getWishlist(state, id);
 
-            editWishlist(state,{
+            return editWishlist(state,{
                 ...wishlist,
                 name
             });
