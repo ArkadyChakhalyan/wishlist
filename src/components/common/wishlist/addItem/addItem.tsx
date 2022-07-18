@@ -11,11 +11,14 @@ import { addWishlistItemAC } from "../../../../store/reducers/wishlistsReducer/w
 
 export const AddItem: FunctionComponent<TAddItemProps> = ({
     wishlistId,
+    onClick,
     isEmpty
 }) => {
     const dispatch = useDispatch();
 
     const onAdd = () => {
+        onClick();
+
         const item = {
             id: Date.now(),
             name: '',

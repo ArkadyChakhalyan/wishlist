@@ -1,6 +1,6 @@
 import { TWishlistFavoriteProps } from "./types"
 import { yellow } from "@mui/material/colors";
-import { sortByFavoriteAC, toggleWishlistFavoriteAC } from "../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { toggleWishlistFavoriteAC } from "../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { IconButton, Tooltip, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +20,6 @@ export const WishlistFavorite: FunctionComponent<TWishlistFavoriteProps> = ({
 
     const onToggleFavorite = () => {
         dispatch(toggleWishlistFavoriteAC(id));
-        dispatch(sortByFavoriteAC())
     };
 
     return (

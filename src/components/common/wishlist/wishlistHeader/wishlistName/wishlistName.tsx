@@ -2,14 +2,15 @@ import { TWishlistNameProps } from "./types";
 import { Avatar, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
-import { WISHLIST_ICONS } from "../../constants";
+import { WISHLIST_COLORS, WISHLIST_ICONS } from "../../constants";
 import {
-    WISHLIST_ICONS_NAMES,
+    WISHLIST_ICONS_NAMES, WISHLIST_SETTINGS_COLOR_TOOLTIP,
     WISHLIST_SETTINGS_ICON_TOOLTIP,
     WISHLIST_SETTINGS_NAME_LABEL,
     WISHLIST_SETTINGS_NAME_PLACEHOLDER
 } from "./constants";
 import {
+    editWishlistColorAC,
     editWishlistIconAC,
     editWishlistNameAC
 } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
@@ -50,6 +51,10 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     const onSelectIcon = (value: string) => {
         const icon = value as EWishlistIcon;
         dispatch(editWishlistIconAC({ id, icon }));
+    };
+
+    const onSelectColor = (color: string) => {
+        dispatch(editWishlistColorAC({ id, color }));
     };
 
     const onBlur = () => {
@@ -117,16 +122,28 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
         >
             {
                 edit ?
-                    <SelectButton
-                        options={WISHLIST_ICONS_NAMES}
-                        selected={icon}
-                        icons={WISHLIST_ICONS}
-                        iconColor={color}
-                        type={ESelectType.ICON}
-                        tooltip={WISHLIST_SETTINGS_ICON_TOOLTIP}
-                        onSelect={onSelectIcon}
+                    <Stack
+                        direction='row'
+                        spacing={1}
                         sx={{ mr: 1 }}
-                    />
+                    >
+                        <SelectButton
+                            options={WISHLIST_ICONS_NAMES}
+                            selected={icon}
+                            icons={WISHLIST_ICONS}
+                            iconColor={color}
+                            type={ESelectType.ICON}
+                            tooltip={WISHLIST_SETTINGS_ICON_TOOLTIP}
+                            onSelect={onSelectIcon}
+                        />
+                        <SelectButton
+                            tooltip={WISHLIST_SETTINGS_COLOR_TOOLTIP}
+                            options={WISHLIST_COLORS}
+                            selected={color}
+                            type={ESelectType.COLOR}
+                            onSelect={onSelectColor}
+                        />
+                    </Stack>
                     :
                     <Avatar
                         sx={{

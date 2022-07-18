@@ -1,5 +1,5 @@
 import { EWishlistCounter, TWishlistCounterProps } from "./types";
-import { alpha, Box, MenuItem, Stack, TextField, Typography } from "@mui/material";
+import { Box, MenuItem, Stack, TextField, Typography } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
 import { editWishlistCounterAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
@@ -64,7 +64,7 @@ export const WishlistCounter: FunctionComponent<TWishlistCounterProps> = ({
                         >
                             {
                                 type === EWishlistCounter.PERCENTAGE ?
-                                    Math.round(doneItems / totalItems) + '%'
+                                    Math.round(doneItems / totalItems * 100) + '%'
                                     : doneItems + ' / ' + totalItems
                             }
                         </Typography>

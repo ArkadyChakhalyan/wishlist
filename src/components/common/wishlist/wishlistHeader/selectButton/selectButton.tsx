@@ -10,7 +10,6 @@ export const SelectButton: FunctionComponent<TSelectButtonProps> = ({
     iconColor,
     selected,
     tooltip,
-    sx,
     onSelect
 }) => {
     const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
@@ -29,7 +28,6 @@ export const SelectButton: FunctionComponent<TSelectButtonProps> = ({
     };
 
     const buttonStyle = {
-        ...sx,
         border: `${!!anchor ? 'solid 2px' : 'solid 1px'} !important`,
         borderColor: `${!!anchor ? theme.palette.primary.main : alpha(theme.palette.common.black, 0.25)} !important`,
         '.MuiSvgIcon-root': { background: iconColor }

@@ -9,6 +9,25 @@ const initialState: TWishlistsState = {
     folded: false
 };
 
+const getWishlist = (
+    state: TWishlistsState,
+    wishlistId: TWishlistId
+): IWishlist => {
+    const wishlists = state.wishlists;
+    const idx = wishlists.findIndex(({ id }) => id === wishlistId);
+    return wishlists[idx];
+}
+
+const getWishlistItem = (
+    state: TWishlistsState,
+    wishlistId: TWishlistId,
+    itemId: TWishId
+): IWishlistItem => {
+    const items = getWishlist(state, wishlistId).items;
+    const idx = items.findIndex(({ id }) => id === itemId);
+    return items[idx];
+}
+
 const editWishlist = (
     state: TWishlistsState,
     wishlist: IWishlist
@@ -38,13 +57,21 @@ const editWishlistItems = (
     });
 }
 
-const getWishlist = (
+const editWishlistItem = (
     state: TWishlistsState,
-    wishlistId: TWishlistId
-): IWishlist => {
-    const wishlists = state.wishlists;
-    const idx = wishlists.findIndex(({ id }) => id === wishlistId);
-    return wishlists[idx];
+    wishlistId: TWishlistId,
+    item: IWishlistItem
+): TWishlistsState => {
+    const wishlistItems = getWishlist(state, wishlistId).items;
+    const idx = wishlistItems.findIndex(({ id }) => id === item.id);
+
+    const newWishlistItems = [
+        ...wishlistItems.slice(0, idx),
+        item,
+        ...wishlistItems.slice(idx + 1)
+    ];
+
+    return editWishlistItems(state, wishlistId, newWishlistItems);
 }
 
 export const wishlistsSlice = createSlice({
@@ -112,17 +139,16 @@ export const wishlistsSlice = createSlice({
             });
         },
         toggleWishlistFavoriteAC: (state, action: PayloadAction<TWishlistId>) => {
-            const wishlist = getWishlist(state, action.payload);
+            const wishlists = state.wishlists;
+            const idx = wishlists.findIndex(({ id }) => id === action.payload);
 
-            return editWishlist(state,{
-                ...wishlist,
-                favorite: !wishlist.favorite
-            });
-        },
-        sortByFavoriteAC: (state) => {
             return {
                 ...state,
-                wishlists: [...state.wishlists].sort((a, b) => a.favorite === b.favorite ? 0 : b.favorite ? 1 : -1)
+                wishlists: [
+                    ...wishlists.slice(0, idx),
+                    {...wishlists[idx], favorite: !wishlists[idx].favorite},
+                    ...wishlists.slice(idx + 1)
+                ].sort((a, b) => a.favorite === b.favorite ? 0 : b.favorite ? 1 : -1)
             };
         },
         toggleFoldedAC: (state) => {
@@ -154,19 +180,23 @@ export const wishlistsSlice = createSlice({
 
             return editWishlistItems(state, id, newWishlistItems);
         },
-        editWishlistItemAC: (state, action: PayloadAction<{ id: TWishlistId, item: IWishlistItem }>) => {
-            const { item, id } = action.payload;
+        toggleWishlistItemDoneAC: (state,  action: PayloadAction<{ wishlistId: TWishlistId, itemId: TWishId }>) => {
+            const { wishlistId, itemId} = action.payload;
 
-            const wishlistItems = getWishlist(state, id).items;
-            const idx = wishlistItems.findIndex(({ id }) => id === item.id);
+            const wishlist = getWishlist(state, wishlistId);
+            const items = wishlist.items;
 
-            const newWishlistItems = [
-                ...wishlistItems.slice(0, idx),
-                item,
-                ...wishlistItems.slice(idx + 1)
+            const idx = wishlist.items.findIndex(({ id }) => id === itemId);
+            const newItems = [
+                ...items.slice(0, idx),
+                { ...items[idx], done: !items[idx].done },
+                ...items.slice(idx + 1)
             ];
 
-            return editWishlistItems(state, id, newWishlistItems);
+            return editWishlist(state, {
+                ...wishlist,
+                items: [...newItems].sort((a, b) => a.done === b.done ? 0 : a.done ? 1 : -1)
+            });
         },
     },
 })
@@ -179,10 +209,9 @@ export const {
     editWishlistIconAC,
     editWishlistColorAC,
     editWishlistCounterAC,
-    sortByFavoriteAC,
     addWishlistItemAC,
     deleteWishlistItemAC,
-    editWishlistItemAC,
+    toggleWishlistItemDoneAC,
     toggleFoldedAC
 } = wishlistsSlice.actions;
 
