@@ -29,7 +29,7 @@ export const MenuItem: FunctionComponent<TMenuItemProps> = ({
             enterDelay={300}
             enterNextDelay={300}
         >
-            <Link to={link}>
+            <Link to={link} tabIndex={-1}>
                 <Button
                     size='large'
                     sx={style}
@@ -50,6 +50,14 @@ const Button = styled(IconButton)<IconButtonProps>(({ theme }) => ({
     width: theme.spacing(6),
     height: theme.spacing(6),
     '&:hover': {
+        color: alpha(theme.palette.common.white, 1),
+        backgroundColor: alpha(theme.palette.common.white, 0.1),
+    },
+    '&:focus': {
+        color: alpha(theme.palette.common.white, 1),
+        backgroundColor: alpha(theme.palette.common.white, 0.1),
+    },
+    '&:active': {
         color: alpha(theme.palette.common.white, 1),
         backgroundColor: alpha(theme.palette.common.white, 0.1),
     },

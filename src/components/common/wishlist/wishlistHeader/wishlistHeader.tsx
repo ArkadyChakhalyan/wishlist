@@ -18,14 +18,18 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
     const open = location.pathname.includes('/edit');
 
     const containerStyle = {
-        px: 3,
-        pr: 1,
         height: open ? theme.spacing(40) : theme.spacing(10),
-        width: `calc(100% - ${theme.spacing(4)})`,
-        alignItems: 'center',
-        justifyContent: 'space-between',
         boxShadow: `4px 0 6px ${alpha(theme.palette.common.black, 0.2)}`,
         zIndex: theme.zIndex.appBar
+    };
+
+    const headerStyle = {
+        px: 3,
+        pr: 1,
+        height: theme.spacing(10),
+        width: `calc(100% - ${theme.spacing(4)})`,
+        alignItems: 'center',
+        justifyContent: 'space-between'
     };
 
     const onClick = () => {
@@ -37,8 +41,8 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
     };
 
     return (
-        <Stack>
-            <Stack sx={containerStyle} direction='row'>
+        <Stack sx={containerStyle}>
+            <Stack sx={headerStyle} direction='row'>
                <WishlistName wishlist={wishlist} edit={open} />
                 <Tooltip
                     title={

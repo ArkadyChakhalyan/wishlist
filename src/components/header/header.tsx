@@ -22,7 +22,8 @@ export const Header: FunctionComponent<THeaderProps> = () => {
                     spacing={2}
                     direction='row'
                     sx={{
-                        pr: 2
+                        pr: 2,
+                        alignItems: 'center'
                     }}
                 >
                     <Tooltip

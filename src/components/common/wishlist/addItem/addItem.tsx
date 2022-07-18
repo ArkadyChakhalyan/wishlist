@@ -18,7 +18,8 @@ export const AddItem: FunctionComponent<TAddItemProps> = ({
     const onAdd = () => {
         const item = {
             id: Date.now(),
-            name: ''
+            name: '',
+            done: false
         };
 
         dispatch(addWishlistItemAC({ id: wishlistId, item }));

@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IWishlist, IWishlistItem, TWishId, TWishlistId, TWishlistsState } from "./types";
+import { EWishlistIcon, IWishlist, IWishlistItem, TWishId, TWishlistId, TWishlistsState } from "./types";
+import {
+    EWishlistCounter
+} from "../../../components/common/wishlist/wishlistHeader/wishlistName/wishlistCounter/types";
 
 const initialState: TWishlistsState = {
     wishlists: [],
@@ -78,6 +81,36 @@ export const wishlistsSlice = createSlice({
                 name
             });
         },
+        editWishlistIconAC: (state, action: PayloadAction<{ id: TWishlistId, icon: EWishlistIcon }>) => {
+            const { icon, id } = action.payload;
+
+            const wishlist = getWishlist(state, id);
+
+            return editWishlist(state,{
+                ...wishlist,
+                icon
+            });
+        },
+        editWishlistColorAC: (state, action: PayloadAction<{ id: TWishlistId, color: string }>) => {
+            const { color, id } = action.payload;
+
+            const wishlist = getWishlist(state, id);
+
+            return editWishlist(state,{
+                ...wishlist,
+                color
+            });
+        },
+        editWishlistCounterAC: (state, action: PayloadAction<{ id: TWishlistId, counter: EWishlistCounter }>) => {
+            const { counter, id } = action.payload;
+
+            const wishlist = getWishlist(state, id);
+
+            return editWishlist(state,{
+                ...wishlist,
+                counter
+            });
+        },
         toggleWishlistFavoriteAC: (state, action: PayloadAction<TWishlistId>) => {
             const wishlist = getWishlist(state, action.payload);
 
@@ -143,6 +176,9 @@ export const {
     deleteWishlistAC,
     toggleWishlistFavoriteAC,
     editWishlistNameAC,
+    editWishlistIconAC,
+    editWishlistColorAC,
+    editWishlistCounterAC,
     sortByFavoriteAC,
     addWishlistItemAC,
     deleteWishlistItemAC,

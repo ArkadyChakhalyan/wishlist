@@ -11,7 +11,8 @@ import { getWishlistFavorite } from "../../../store/reducers/wishlistsReducer/se
 import { IAppState } from "../../../store/types";
 
 export const WishlistFavorite: FunctionComponent<TWishlistFavoriteProps> = ({
-    id
+    id,
+    sx
 }) => {
     const dispatch = useDispatch();
 
@@ -37,7 +38,7 @@ export const WishlistFavorite: FunctionComponent<TWishlistFavoriteProps> = ({
             enterDelay={300}
             enterNextDelay={300}
         >
-            <IconButton onClick={onToggleFavorite} sx={{ ml: 0.25 }}>
+            <IconButton onClick={onToggleFavorite} sx={sx}>
                 {
                     favorite ?
                         <StarRateRoundedIcon sx={{ color: yellow[600] }} />

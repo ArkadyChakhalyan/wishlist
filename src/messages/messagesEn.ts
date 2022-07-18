@@ -75,6 +75,18 @@ export const messagesEn = {
                 name: {
                     label: 'Name',
                     placeholder: 'Wishlist name...'
+                },
+                icon: {
+                    tooltip: 'Change icon'
+                },
+                color: {
+                    tooltip: 'Change color'
+                },
+                counter: {
+                    label: 'Counter',
+                    none: 'None',
+                    items: 'Done items',
+                    percentage: 'Done percentage'
                 }
             }
         },

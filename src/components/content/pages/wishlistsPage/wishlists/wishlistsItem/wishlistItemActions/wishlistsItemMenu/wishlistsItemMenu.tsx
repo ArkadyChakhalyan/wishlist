@@ -19,6 +19,7 @@ import {
     deleteWishlistAC
 } from "../../../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
     anchor,
@@ -26,23 +27,33 @@ export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
     onClose
 }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const wishlistToCopy = useSelector((state: IAppState) => getWishlist(state, id));
 
+    const onClick = (action: () => void) => {
+        action();
+        onClose();
+    };
+
     const onDuplicate = () => {
+        const id = Date.now();
         const wishlist = {
             ...wishlistToCopy,
-            name: WISHLIST_ITEM_MENU_DUPLICATE_PREFIX + wishlistToCopy!.name,
+            name: WISHLIST_ITEM_MENU_DUPLICATE_PREFIX + wishlistToCopy.name,
             favorite: false,
-            id: Date.now()
+            id
         };
         dispatch(addWishlistAC(wishlist));
-        onClose();
+        navigate(`${id}`);
+    };
+
+    const onEdit = () => {
+        navigate(`${id}/edit`);
     };
 
     const onDelete = () => {
         dispatch(deleteWishlistAC(id));
-        onClose();
     };
 
     return (
@@ -52,7 +63,7 @@ export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
                 open={!!anchor}
                 onClose={onClose}
             >
-                <MenuItem onClick={onClose}>
+                <MenuItem onClick={() => onClick(onEdit)}>
                     <ListItemIcon>
                         <EditRoundedIcon />
                     </ListItemIcon>
@@ -60,7 +71,7 @@ export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
                         {WISHLIST_ITEM_MENU_EDIT}
                     </ListItemText>
                 </MenuItem>
-                <MenuItem onClick={onDuplicate}>
+                <MenuItem onClick={() => onClick(onDuplicate)}>
                     <ListItemIcon>
                         <ContentCopyRoundedIcon />
                     </ListItemIcon>
@@ -68,7 +79,7 @@ export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
                         {WISHLIST_ITEM_MENU_DUPLICATE}
                     </ListItemText>
                 </MenuItem>
-                <MenuItem onClick={onDuplicate}>
+                <MenuItem onClick={() => onClick(onDuplicate)}>
                     <ListItemIcon>
                         <ReplyRoundedIcon />
                     </ListItemIcon>
@@ -76,7 +87,7 @@ export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
                         {WISHLIST_ITEM_MENU_SHARE}
                     </ListItemText>
                 </MenuItem>
-                <MenuItem onClick={onDelete}>
+                <MenuItem onClick={() => onClick(onDelete)}>
                     <ListItemIcon>
                         <DeleteOutlineRoundedIcon />
                     </ListItemIcon>

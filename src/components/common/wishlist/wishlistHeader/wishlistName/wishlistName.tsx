@@ -3,11 +3,23 @@ import { Avatar, Stack, TextField, Tooltip, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
 import { WISHLIST_ICONS } from "../../constants";
-import { WISHLIST_SETTINGS_NAME_LABEL, WISHLIST_SETTINGS_NAME_PLACEHOLDER } from "./constants";
-import { editWishlistNameAC } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import {
+    WISHLIST_ICONS_NAMES,
+    WISHLIST_SETTINGS_ICON_TOOLTIP,
+    WISHLIST_SETTINGS_NAME_LABEL,
+    WISHLIST_SETTINGS_NAME_PLACEHOLDER
+} from "./constants";
+import {
+    editWishlistIconAC,
+    editWishlistNameAC
+} from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { useDispatch } from "react-redux";
 import { WishlistFavorite } from "../../../wishlistFavorite";
 import { useNavigate } from "react-router-dom";
+import { SelectButton } from "../selectButton";
+import { ESelectType } from "../selectButton/types";
+import { EWishlistIcon } from "../../../../../store/reducers/wishlistsReducer/types";
+import { WishlistCounter } from "./wishlistCounter";
 
 export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     wishlist,
@@ -20,7 +32,9 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
         icon,
         name,
         color,
-        id
+        id,
+        counter,
+        items
     } = wishlist;
 
     const [wrap, setWrap] = useState(false);
@@ -31,6 +45,11 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
 
     const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewName(e.target.value);
+    };
+
+    const onSelectIcon = (value: string) => {
+        const icon = value as EWishlistIcon;
+        dispatch(editWishlistIconAC({ id, icon }));
     };
 
     const onBlur = () => {
@@ -57,13 +76,21 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     };
 
     useEffect(() => {
-        if (
-            nameRef.current &&
-            nameRef.current.offsetHeight > 24 // line height
-        ) {
-            setWrap(true);
+        setTimeout(() => {
+            if (
+                nameRef.current &&
+                nameRef.current.offsetHeight > 29 // line height
+            ) {
+                setWrap(true);
+            } else {
+                setWrap(false);
+            }
+        }, 0);
+
+        return () => {
+            setWrap(false);
         }
-    }, []);
+    }, [name, id, counter, edit]);
 
     useEffect(() => {
         setNewName(name);
@@ -78,7 +105,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                 input.select();
             }, 0);
         }
-    }, [wishlist]);
+    }, [id]);
 
     return (
         <Stack
@@ -88,17 +115,31 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                 width: `calc(100% - ${theme.spacing(5)})`
             }}
         >
-            <Avatar
-                sx={{
-                    bgcolor: color,
-                    height: theme.spacing(4),
-                    width: theme.spacing(4),
-                    mr: 1.5
-                }}
-                variant='rounded'
-            >
-                {icon && WISHLIST_ICONS[icon]}
-            </Avatar>
+            {
+                edit ?
+                    <SelectButton
+                        options={WISHLIST_ICONS_NAMES}
+                        selected={icon}
+                        icons={WISHLIST_ICONS}
+                        iconColor={color}
+                        type={ESelectType.ICON}
+                        tooltip={WISHLIST_SETTINGS_ICON_TOOLTIP}
+                        onSelect={onSelectIcon}
+                        sx={{ mr: 1 }}
+                    />
+                    :
+                    <Avatar
+                        sx={{
+                            bgcolor: color,
+                            height: theme.spacing(4),
+                            width: theme.spacing(4),
+                            mr: 1.5
+                        }}
+                        variant='rounded'
+                    >
+                        {icon && WISHLIST_ICONS[icon]}
+                    </Avatar>
+            }
             {
                 edit ?
                     <TextField
@@ -109,13 +150,13 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                         label={WISHLIST_SETTINGS_NAME_LABEL}
                         placeholder={WISHLIST_SETTINGS_NAME_PLACEHOLDER}
                         fullWidth
-                        autoFocus
                         inputRef={inputRef}
+                        size='small'
                     />
                     : wrap ?
                         <Tooltip
                             title={
-                                <Typography sx={{ p: 0.25 }} fontSize={'small'}>
+                                <Typography fontSize={'small'}>
                                     {name}
                                 </Typography>
                             }
@@ -124,11 +165,11 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                             enterNextDelay={300}
                         >
                             <Typography
-                                noWrap={wrap}
+                                noWrap
                                 ref={nameRef}
                                 variant='h6'
                                 fontSize={18}
-                                maxWidth={`calc(100% - ${theme.spacing(6)})`}
+                                maxWidth={`calc(100% - ${theme.spacing(5)})`}
                             >
                                 {name}
                             </Typography>
@@ -138,7 +179,13 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                             {name}
                         </Typography>
             }
-            <WishlistFavorite id={id} />
+            {!edit && <WishlistFavorite id={id} sx={{ ml: 0.25 }} />}
+            <WishlistCounter
+                items={items}
+                id={id}
+                edit={edit}
+                type={counter}
+            />
         </Stack>
     );
 }
