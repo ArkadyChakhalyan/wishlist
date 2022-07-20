@@ -18,9 +18,10 @@ export const Content: FunctionComponent<TContentProps> = () => {
         >
             <Routes>
                 <Route path='home' element={<></>}/>
-                <Route path='wishlists/*' element={<WishlistsPage />}>
+                <Route path='wishlists' element={<WishlistsPage />}>
                     <Route path=':id' element={<WishlistsPage />}>
                         <Route path='edit' element={<WishlistsPage />} />
+                        <Route path=':itemId' element={<WishlistsPage />} />
                     </Route>
                 </Route>
                 <Route path='shared' element={<></>}/>

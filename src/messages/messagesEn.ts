@@ -97,6 +97,39 @@ export const messagesEn = {
             tooltip: 'Add new wish',
             button: 'Make a wish',
             text: 'Add your first wish to the list',
+        },
+        item: {
+            name: {
+                placeholder: 'Wish name...',
+                label: 'Name'
+            },
+            actions: {
+                link: {
+                    placeholder: 'Add a link...',
+                    label: 'Link',
+                    tooltip: {
+                        open: 'Open a link',
+                        add: 'Add a link'
+                    }
+                },
+                delete: {
+                    tooltip: 'Delete'
+                }
+            },
+            settings: {
+                delete: {
+                    button: 'Delete'
+                },
+                save: {
+                    button: 'Save'
+                },
+                done: {
+                    button: {
+                        undone: 'Mark as done',
+                        done: 'Mark as undone'
+                    }
+                }
+            }
         }
     }
 }

@@ -102,6 +102,7 @@ export const CreateWishlistModal: FunctionComponent<TCreateWishlistModalProps> =
                         id='name'
                         name='name'
                         inputRef={ref}
+                        required
                     />
                     <Button
                         type='submit'

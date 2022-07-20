@@ -40,7 +40,7 @@ export const WishlistFavorite: FunctionComponent<TWishlistFavoriteProps> = ({
             <IconButton onClick={onToggleFavorite} sx={sx}>
                 {
                     favorite ?
-                        <StarRateRoundedIcon sx={{ color: yellow[600] }} />
+                        <StarRateRoundedIcon sx={{ color: yellow[700] }} />
                         : <StarBorderRoundedIcon />
                 }
             </IconButton>

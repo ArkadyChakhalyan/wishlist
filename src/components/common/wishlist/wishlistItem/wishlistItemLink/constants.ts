@@ -1,0 +1,4 @@
+import { messages } from "../../../../app/constants";
+
+export const WISHLIST_ITEM_LINK_PLACEHOLDER = messages.wishlist.item.link.placeholder;
+export const WISHLIST_ITEM_LINK_LABEL = messages.wishlist.item.link.label;

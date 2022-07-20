@@ -1,5 +1,5 @@
 import { TWishlistProps } from "./types";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { WishlistHeader } from "./wishlistHeader";
 import { WishlistItem } from "./wishlistItem";
 import { Stack } from "@mui/material";
@@ -14,13 +14,17 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
 
     const { id, items } = wishlist;
 
+    const ref = useRef(null);
+
     const listStyle = {
         height: `calc(100% - ${theme.spacing(10)})`,
         overflow: 'auto'
     };
 
-    const onClick = () => {
-        navigate(`${id}`);
+    const onClick = (e: React.MouseEvent) => {
+        if (e.target === ref.current) {
+            navigate(`${id}`);
+        }
     };
 
     return (
@@ -32,6 +36,7 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
                     spacing={2}
                     sx={listStyle}
                     onClick={onClick}
+                    ref={ref}
                 >
                     <Stack spacing={2} sx={{ p: 2, px: 4 }}>
                         {
@@ -45,7 +50,6 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
             <AddItem
                 isEmpty={!wishlist.items.length}
                 wishlistId={id}
-                onClick={onClick}
             />
         </Stack>
     );

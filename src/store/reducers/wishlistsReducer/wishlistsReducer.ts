@@ -167,10 +167,10 @@ export const wishlistsSlice = createSlice({
                 ...wishlistItems
             ]);
         },
-        deleteWishlistItemAC: (state, action: PayloadAction<{ id: TWishlistId, itemId: TWishId }>) => {
-            const { itemId, id } = action.payload;
+        deleteWishlistItemAC: (state, action: PayloadAction<{ wishlistId: TWishlistId, itemId: TWishId }>) => {
+            const { itemId, wishlistId } = action.payload;
 
-            const wishlistItems = getWishlist(state, id).items;
+            const wishlistItems = getWishlist(state, wishlistId).items;
             const idx = wishlistItems.findIndex(({ id }) => id === itemId);
 
             const newWishlistItems = [
@@ -178,10 +178,10 @@ export const wishlistsSlice = createSlice({
                 ...wishlistItems.slice(idx + 1)
             ];
 
-            return editWishlistItems(state, id, newWishlistItems);
+            return editWishlistItems(state, wishlistId, newWishlistItems);
         },
         toggleWishlistItemDoneAC: (state,  action: PayloadAction<{ wishlistId: TWishlistId, itemId: TWishId }>) => {
-            const { wishlistId, itemId} = action.payload;
+            const { wishlistId, itemId } = action.payload;
 
             const wishlist = getWishlist(state, wishlistId);
             const items = wishlist.items;
@@ -198,6 +198,20 @@ export const wishlistsSlice = createSlice({
                 items: [...newItems].sort((a, b) => a.done === b.done ? 0 : a.done ? 1 : -1)
             });
         },
+        editWishlistItemNameAC: (state,  action: PayloadAction<{ wishlistId: TWishlistId, itemId: TWishId, name: string }>) => {
+            const { wishlistId, itemId, name } = action.payload;
+
+            const item = getWishlistItem(state, wishlistId, itemId);
+
+            return editWishlistItem(state, wishlistId, { ...item, name });
+        },
+        editWishlistItemLinkAC: (state,  action: PayloadAction<{ wishlistId: TWishlistId, itemId: TWishId, link: string }>) => {
+            const { wishlistId, itemId, link } = action.payload;
+
+            const item = getWishlistItem(state, wishlistId, itemId);
+
+            return editWishlistItem(state, wishlistId, { ...item, link });
+        }
     },
 })
 
@@ -211,8 +225,10 @@ export const {
     editWishlistCounterAC,
     addWishlistItemAC,
     deleteWishlistItemAC,
+    editWishlistItemNameAC,
     toggleWishlistItemDoneAC,
-    toggleFoldedAC
+    toggleFoldedAC,
+    editWishlistItemLinkAC
 } = wishlistsSlice.actions;
 
 export default wishlistsSlice.reducer;

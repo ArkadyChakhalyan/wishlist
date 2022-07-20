@@ -169,6 +169,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                         fullWidth
                         inputRef={inputRef}
                         size='small'
+                        required
                     />
                     : wrap ?
                         <Tooltip

@@ -1,6 +1,6 @@
 import { TAddItemProps } from "./types";
 import { alpha, Box, IconButton, styled, Tooltip, Typography } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { theme } from "../../../../styles/theme";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { ADD_WISHLIST_ITEM_BUTTON, ADD_WISHLIST_ITEM_TEXT, ADD_WISHLIST_ITEM_TOOLTIP } from "./constants";
@@ -8,25 +8,41 @@ import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import { Empty } from "../../empty";
 import { useDispatch } from "react-redux";
 import { addWishlistItemAC } from "../../../../store/reducers/wishlistsReducer/wishlistsReducer";
+import { useNavigate } from "react-router-dom";
 
 export const AddItem: FunctionComponent<TAddItemProps> = ({
     wishlistId,
-    onClick,
     isEmpty
 }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onAdd = () => {
-        onClick();
-
+        const id = Date.now();
         const item = {
-            id: Date.now(),
+            id,
             name: '',
             done: false
         };
 
         dispatch(addWishlistItemAC({ id: wishlistId, item }));
+        navigate(`${wishlistId}/${id}`)
     };
+
+
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (
+                (e.metaKey || e.ctrlKey) &&
+                e.key === 'e'
+            ) {
+                onAdd();
+            }
+        };
+
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, []);
 
     return (
         <>
