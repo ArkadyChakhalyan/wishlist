@@ -1,5 +1,5 @@
 import { TAddItemProps } from "./types";
-import { alpha, Box, IconButton, styled, Tooltip, Typography } from "@mui/material";
+import { alpha, Box, IconButton, styled } from "@mui/material";
 import React, { FunctionComponent, useEffect } from "react";
 import { theme } from "../../../../styles/theme";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -9,6 +9,7 @@ import { Empty } from "../../empty";
 import { useDispatch } from "react-redux";
 import { addWishlistItemAC } from "../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "../../../../UI/tooltip/tooltip";
 
 export const AddItem: FunctionComponent<TAddItemProps> = ({
     wishlistId,
@@ -26,7 +27,7 @@ export const AddItem: FunctionComponent<TAddItemProps> = ({
         };
 
         dispatch(addWishlistItemAC({ id: wishlistId, item }));
-        navigate(`${wishlistId}/${id}`)
+        navigate(`${wishlistId}/${id}`);
     };
 
 
@@ -42,7 +43,7 @@ export const AddItem: FunctionComponent<TAddItemProps> = ({
 
         document.addEventListener('keydown', onKeyDown);
         return () => document.removeEventListener('keydown', onKeyDown);
-    }, []);
+    }, [wishlistId]);
 
     return (
         <>
@@ -66,14 +67,7 @@ export const AddItem: FunctionComponent<TAddItemProps> = ({
                     </Box>
                     :
                     <Tooltip
-                        title={
-                            <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                                {ADD_WISHLIST_ITEM_TOOLTIP}
-                            </Typography>
-                        }
-                        disableInteractive
-                        enterDelay={300}
-                        enterNextDelay={300}
+                        title={ADD_WISHLIST_ITEM_TOOLTIP}
                         placement='left'
                     >
                         <AddButton
@@ -94,18 +88,18 @@ const AddButton = styled(IconButton)(({ theme }) => ({
     right: theme.spacing(5),
     height: theme.spacing(6),
     width: theme.spacing(6),
-    background: alpha(theme.palette.primary.main, 0.9),
+    background: theme.palette.primary.main,
     color: theme.palette.common.white,
     '&:hover': {
-        background: theme.palette.primary.main,
+        background: theme.palette.primary.dark,
         color: theme.palette.common.white
     },
     '&:focus': {
-        background: theme.palette.primary.main,
+        background: theme.palette.primary.dark,
         color: theme.palette.common.white
     },
     '&:active': {
-        background: theme.palette.primary.main,
+        background: theme.palette.primary.dark,
         color: theme.palette.common.white
     }
 }))

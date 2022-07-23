@@ -64,7 +64,7 @@ export const WishlistItem: FunctionComponent<TWishlistItemProps> = ({
         width: 1,
         cursor: 'pointer',
         opacity: done && !edit ? 0.6 : 1,
-        background: edit ? alpha(theme.palette.primary.light, 0.05) : 'none'
+        background: edit ? alpha(theme.palette.primary.light, 0.1) : 'none'
     };
 
     const checkboxStyle = {
@@ -136,6 +136,6 @@ export const WishlistItem: FunctionComponent<TWishlistItemProps> = ({
 const Card = styled(Paper)(({ theme }) => ({
     '&:hover': {
         opacity: 1,
-        background: alpha(theme.palette.primary.light, 0.05)
+        background: alpha(theme.palette.primary.light, 0.1)
     }
 }));

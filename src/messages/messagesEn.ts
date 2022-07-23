@@ -63,8 +63,8 @@ export const messagesEn = {
         header: {
             favorite: {
                 tooltip: {
-                    add: 'Add to wishlistFavorite',
-                    remove: 'Remove from wishlistFavorite'
+                    add: 'Add to favorite',
+                    remove: 'Remove from favorite'
                 }
             },
             settings: {
@@ -101,7 +101,8 @@ export const messagesEn = {
         item: {
             name: {
                 placeholder: 'Wish name...',
-                label: 'Name'
+                label: 'Name',
+                add: 'Add'
             },
             actions: {
                 link: {

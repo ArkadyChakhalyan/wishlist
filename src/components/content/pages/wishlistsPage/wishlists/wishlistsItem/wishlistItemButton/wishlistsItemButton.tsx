@@ -1,9 +1,10 @@
 import { TWishlistsItemButtonProps } from "./types";
-import { Avatar, ListItemButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Avatar, ListItemButton, Stack, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { WISHLIST_ICONS } from "../../../../../../common/wishlist/constants";
 import { theme } from "../../../../../../../styles/theme";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Tooltip } from "../../../../../../../UI/tooltip/tooltip";
 
 export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> = ({
     wishlist,
@@ -70,16 +71,7 @@ export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> =
                     <>
                         {
                             wrap ?
-                                <Tooltip
-                                    title={
-                                        <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                                            {name}
-                                        </Typography>
-                                    }
-                                    disableInteractive
-                                    enterDelay={300}
-                                    enterNextDelay={300}
-                                >
+                                <Tooltip title={name}>
                                     <Typography noWrap={wrap} ref={ref}>
                                         {name}
                                     </Typography>

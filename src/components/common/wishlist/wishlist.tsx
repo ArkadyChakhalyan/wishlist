@@ -14,7 +14,7 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
 
     const { id, items } = wishlist;
 
-    const ref = useRef(null);
+    const ref = useRef<HTMLElement>(null);
 
     const listStyle = {
         height: `calc(100% - ${theme.spacing(10)})`,
@@ -22,7 +22,10 @@ export const Wishlist: FunctionComponent<TWishlistProps> = ({
     };
 
     const onClick = (e: React.MouseEvent) => {
-        if (e.target === ref.current) {
+        if (
+            e.target === ref.current ||
+            e.target === ref.current?.firstChild
+        ) {
             navigate(`${id}`);
         }
     };

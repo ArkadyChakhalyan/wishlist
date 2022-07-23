@@ -1,6 +1,6 @@
 import { TWishlistItemActionsProps } from "./types";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import { Button, IconButton, Popover, Stack, styled, TextField, Tooltip, Typography } from "@mui/material";
+import { Button, IconButton, Popover, Stack, styled, TextField } from "@mui/material";
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import AddLinkRoundedIcon from '@mui/icons-material/AddLinkRounded';
 import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
@@ -16,6 +16,7 @@ import {
     WISHLIST_ITEM_SETTINGS_TOGGLE_DONE,
     WISHLIST_ITEM_SETTINGS_TOGGLE_UNDONE
 } from "./constants";
+import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const WishlistItemActions: FunctionComponent<TWishlistItemActionsProps> = ({
     done,
@@ -129,16 +130,7 @@ export const WishlistItemActions: FunctionComponent<TWishlistItemActionsProps> =
                     <>
                         {
                             link ?
-                                <Tooltip
-                                    title={
-                                        <Typography fontSize={'small'}>
-                                            {WISHLIST_ITEM_LINK_TOOLTIP_OPEN}
-                                        </Typography>
-                                    }
-                                    disableInteractive
-                                    enterDelay={300}
-                                    enterNextDelay={300}
-                                >
+                                <Tooltip title={WISHLIST_ITEM_LINK_TOOLTIP_OPEN}>
                                     <IconButton
                                         onClick={onLinkClick}
                                     >
@@ -146,16 +138,7 @@ export const WishlistItemActions: FunctionComponent<TWishlistItemActionsProps> =
                                     </IconButton>
                                 </Tooltip>
                                 :
-                                <Tooltip
-                                    title={
-                                        <Typography fontSize={'small'}>
-                                            {WISHLIST_ITEM_LINK_TOOLTIP_ADD}
-                                        </Typography>
-                                    }
-                                    disableInteractive
-                                    enterDelay={300}
-                                    enterNextDelay={300}
-                                >
+                                <Tooltip title={WISHLIST_ITEM_LINK_TOOLTIP_ADD}>
                                     <LinkButton
                                         onClick={onAddLink}
                                     >
@@ -188,16 +171,7 @@ export const WishlistItemActions: FunctionComponent<TWishlistItemActionsProps> =
                                 inputRef={inputRef}
                             />
                         </Popover>
-                        <Tooltip
-                            title={
-                                <Typography fontSize={'small'}>
-                                    {WISHLIST_ITEM_DELETE_TOOLTIP}
-                                </Typography>
-                            }
-                            disableInteractive
-                            enterDelay={300}
-                            enterNextDelay={300}
-                        >
+                        <Tooltip title={WISHLIST_ITEM_DELETE_TOOLTIP}>
                             <DeleteButton onClick={onDelete}>
                                 <DeleteOutlineRoundedIcon />
                             </DeleteButton>

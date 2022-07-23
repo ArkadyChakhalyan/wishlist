@@ -1,5 +1,5 @@
 import { TWishlistNameProps } from "./types";
-import { Avatar, Stack, TextField, Tooltip, Typography } from "@mui/material";
+import { Avatar, Stack, TextField, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
 import { WISHLIST_COLORS, WISHLIST_ICONS } from "../../constants";
@@ -21,6 +21,7 @@ import { SelectButton } from "../selectButton";
 import { ESelectType } from "../selectButton/types";
 import { EWishlistIcon } from "../../../../../store/reducers/wishlistsReducer/types";
 import { WishlistCounter } from "./wishlistCounter";
+import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
     wishlist,
@@ -172,16 +173,7 @@ export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
                         required
                     />
                     : wrap ?
-                        <Tooltip
-                            title={
-                                <Typography fontSize={'small'}>
-                                    {name}
-                                </Typography>
-                            }
-                            disableInteractive
-                            enterDelay={300}
-                            enterNextDelay={300}
-                        >
+                        <Tooltip title={name}>
                             <Typography
                                 noWrap
                                 ref={nameRef}

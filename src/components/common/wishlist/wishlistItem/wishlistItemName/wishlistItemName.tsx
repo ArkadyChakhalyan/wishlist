@@ -1,14 +1,15 @@
 import { TWishlistItemNameProps } from "./types";
-import { TextField, Tooltip, Typography } from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
-import { WISHLIST_ITEM_NAME_LABEL, WISHLIST_ITEM_NAME_PLACEHOLDER } from "./constants";
+import { WISHLIST_ITEM_NAME_ADD_BUTTON, WISHLIST_ITEM_NAME_LABEL, WISHLIST_ITEM_NAME_PLACEHOLDER } from "./constants";
 import {
     deleteWishlistItemAC,
     editWishlistItemNameAC
 } from "../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
     wishlistId,
@@ -24,12 +25,15 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
 
     const nameRef = useRef<HTMLElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewName(e.target.value);
     };
 
-    const onBlur = () => {
+    const onBlur = (e?: React.FocusEvent) => {
+        if (buttonRef.current && e?.relatedTarget === buttonRef?.current) return;
+
         if (
             newName === name ||
             !newName.length
@@ -49,6 +53,9 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
     const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Escape') {
             setNewName(name);
+
+            if (!name) dispatch(deleteWishlistItemAC({ wishlistId, itemId }));
+
             navigate(`${wishlistId}`);
         }
 
@@ -63,6 +70,11 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
         ) {
             onBlur();
         }
+    };
+
+    const onAdd = () => {
+        onBlur();
+        navigate(`${wishlistId}`);
     };
 
     useEffect(() => {
@@ -88,7 +100,7 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
     }, [itemId]);
 
     return (
-        <>
+        <Stack direction='row' spacing={1}>
             {
                 edit ?
                     <TextField
@@ -106,16 +118,7 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
                         required
                     />
                     : wrap ?
-                        <Tooltip
-                            title={
-                                <Typography fontSize={'small'}>
-                                    {name}
-                                </Typography>
-                            }
-                            disableInteractive
-                            enterDelay={300}
-                            enterNextDelay={300}
-                        >
+                        <Tooltip title={name}>
                             <Typography
                                 noWrap
                                 ref={nameRef}
@@ -137,6 +140,18 @@ export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
                             {name}
                         </Typography>
             }
-        </>
+            {
+                !name &&
+                <Button
+                    ref={buttonRef}
+                    onClick={onAdd}
+                    variant='contained'
+                    disabled={!newName}
+                    sx={{ width: '20%' }}
+                >
+                    {WISHLIST_ITEM_NAME_ADD_BUTTON}
+                </Button>
+            }
+        </Stack>
     );
 }

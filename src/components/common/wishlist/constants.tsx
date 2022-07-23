@@ -17,7 +17,7 @@ export const WISHLISTS_DEFAULT_NAME = messages.wishlistsPage.wishlists.create.de
 
 export const DEFAULT_WISHLIST = {
     name: WISHLISTS_DEFAULT_NAME,
-    color: deepPurple[700],
+    color: blue[800],
     icon: EWishlistIcon.LIST,
     favorite: false,
     items: [],
@@ -41,12 +41,12 @@ export const WISHLIST_ICONS = {
 };
 
 export const WISHLIST_COLORS = [
-    red[700],
-    pink[700],
-    amber[700],
-    green[700],
-    cyan[700],
-    blueGrey[700],
-    blue[700],
-    deepPurple[700]
+    red[800],
+    pink[800],
+    amber[800],
+    green[800],
+    cyan[800],
+    blueGrey[800],
+    deepPurple[800],
+    blue[800]
 ];

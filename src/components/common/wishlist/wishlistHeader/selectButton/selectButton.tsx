@@ -1,7 +1,8 @@
 import { ESelectType, TSelectButtonProps } from "./types";
 import React, { FunctionComponent, useState } from "react";
-import { alpha, Box, IconButton, IconButtonProps, Popover, Stack, styled, Tooltip, Typography } from "@mui/material";
+import { alpha, Box, IconButton, IconButtonProps, Popover, Stack, styled } from "@mui/material";
 import { theme } from "../../../../../styles/theme";
+import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const SelectButton: FunctionComponent<TSelectButtonProps> = ({
     options,
@@ -42,16 +43,7 @@ export const SelectButton: FunctionComponent<TSelectButtonProps> = ({
 
     return (
         <>
-            <Tooltip
-                title={
-                    <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                        {tooltip}
-                    </Typography>
-                }
-                disableInteractive
-                enterDelay={300}
-                enterNextDelay={300}
-            >
+            <Tooltip title={tooltip}>
                 <Button
                     onClick={onOpen}
                     sx={buttonStyle}

@@ -1,10 +1,11 @@
 import { THeaderProps } from "./types";
-import { alpha, Badge, IconButton, Stack, styled, Tooltip, Typography } from "@mui/material";
+import { alpha, Badge, IconButton, Stack, styled } from "@mui/material";
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import React, { FunctionComponent } from "react";
 import { Account } from "./account";
 import { HEADER_NOTIFICATION_TOOLTIP } from "./constants";
 import { TopBarSearch } from "./search";
+import { Tooltip } from "../../UI/tooltip/tooltip";
 
 export const Header: FunctionComponent<THeaderProps> = () => {
     return (
@@ -26,16 +27,7 @@ export const Header: FunctionComponent<THeaderProps> = () => {
                         alignItems: 'center'
                     }}
                 >
-                    <Tooltip
-                        title={
-                            <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                                {HEADER_NOTIFICATION_TOOLTIP}
-                            </Typography>
-                        }
-                        disableInteractive
-                        enterDelay={300}
-                        enterNextDelay={300}
-                    >
+                    <Tooltip title={HEADER_NOTIFICATION_TOOLTIP}>
                         <IconButton size='large' color={'primary'}>
                             <Badge badgeContent={17} color='error'>
                                 <NotificationsNoneRoundedIcon/>

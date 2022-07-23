@@ -1,8 +1,9 @@
 import { TMenuItemProps } from "./types";
-import { alpha, Badge, IconButton, IconButtonProps, styled, Tooltip, Typography } from "@mui/material";
+import { alpha, Badge, IconButton, IconButtonProps, styled } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { theme } from "../../../styles/theme";
 import { Link } from "react-router-dom";
+import { Tooltip } from "../../../UI/tooltip/tooltip";
 
 export const MenuItem: FunctionComponent<TMenuItemProps> = ({
     active,
@@ -18,17 +19,7 @@ export const MenuItem: FunctionComponent<TMenuItemProps> = ({
     } : {};
 
     return (
-        <Tooltip
-            title={
-                <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                    {tooltip}
-                </Typography>
-            }
-            placement='right'
-            disableInteractive
-            enterDelay={300}
-            enterNextDelay={300}
-        >
+        <Tooltip title={tooltip} placement='right'>
             <Link to={link} tabIndex={-1}>
                 <Button
                     size='large'

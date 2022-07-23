@@ -1,5 +1,5 @@
 import { TWishlistHeaderProps } from "./types";
-import { alpha, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { alpha, IconButton, Stack } from "@mui/material";
 import React, { FunctionComponent } from "react";
 import { theme } from "../../../../styles/theme";
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
@@ -8,6 +8,7 @@ import { WISHLIST_HEADER_SETTINGS_HIDE_TOOLTIP, WISHLIST_HEADER_SETTINGS_SHOW_TO
 import { WishlistName } from "./wishlistName";
 import { WishlistSettings } from "./wishlistSettings";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Tooltip } from "../../../../UI/tooltip/tooltip";
 
 export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
     wishlist
@@ -45,18 +46,7 @@ export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
             <Stack sx={headerStyle} direction='row'>
                <WishlistName wishlist={wishlist} edit={open} />
                 <Tooltip
-                    title={
-                        <Typography sx={{ p: 0.25 }} fontSize={'small'}>
-                            {
-                                open ?
-                                    WISHLIST_HEADER_SETTINGS_SHOW_TOOLTIP
-                                    : WISHLIST_HEADER_SETTINGS_HIDE_TOOLTIP
-                            }
-                        </Typography>
-                    }
-                    disableInteractive
-                    enterDelay={300}
-                    enterNextDelay={300}
+                    title={open ? WISHLIST_HEADER_SETTINGS_HIDE_TOOLTIP : WISHLIST_HEADER_SETTINGS_SHOW_TOOLTIP}
                     placement='left'
                 >
                     <IconButton onClick={onClick}>
