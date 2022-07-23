@@ -56,16 +56,21 @@ export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> =
                 spacing={1.5}
                 sx={{ alignItems: 'center', overflow: 'hidden' }}
             >
-                <Avatar
-                    sx={{
-                        bgcolor: color,
-                        height: theme.spacing(4),
-                        width: theme.spacing(4)
-                    }}
-                    variant='rounded'
+                <Tooltip
+                    title={folded ? name : false}
+                    placement='right'
                 >
-                    {icon && WISHLIST_ICONS[icon]}
-                </Avatar>
+                    <Avatar
+                        sx={{
+                            bgcolor: color,
+                            height: theme.spacing(4),
+                            width: theme.spacing(4)
+                        }}
+                        variant='rounded'
+                    >
+                        {icon && WISHLIST_ICONS[icon]}
+                    </Avatar>
+                </Tooltip>
                 {
                     !folded &&
                     <>

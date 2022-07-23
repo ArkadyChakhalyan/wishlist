@@ -10,6 +10,7 @@ import { addWishlistAC } from "../../../../../store/reducers/wishlistsReducer/wi
 import { WishlistsHeader } from "./wishlistsHeader";
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const Wishlists: FunctionComponent<TWishlistsProps> = ({
     wishlists,
@@ -64,14 +65,16 @@ export const Wishlists: FunctionComponent<TWishlistsProps> = ({
             >
                 {
                     folded ?
-                        <IconButton
-                            onClick={onAdd}
-                            color='primary'
-                            size='large'
-                            sx={{ ml: 1, my: 0.5 }}
-                        >
-                            <AddRoundedIcon />
-                        </IconButton>
+                        <Tooltip title={WISHLISTS_CREATE_BUTTON} placement='right'>
+                            <IconButton
+                                onClick={onAdd}
+                                color='primary'
+                                size='large'
+                                sx={{ ml: 1, my: 0.5 }}
+                            >
+                                <AddRoundedIcon />
+                            </IconButton>
+                        </Tooltip>
                         :
                         <Button
                             fullWidth

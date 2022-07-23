@@ -45,7 +45,13 @@ export const messagesEn = {
             }
         },
         wishlists: {
-            title: 'Your Wishlists',
+            header: {
+                title: 'Your Wishlists',
+                tooltip: {
+                    fold: 'Fold wishlists',
+                    unfold: 'Unfold wishlists'
+                }
+            },
             menu: {
                 edit: 'Edit',
                 duplicate: 'Duplicate',
