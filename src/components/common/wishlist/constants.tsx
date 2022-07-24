@@ -41,12 +41,12 @@ export const WISHLIST_ICONS = {
 };
 
 export const WISHLIST_COLORS = [
-    red[800],
+    red[600],
     pink[800],
-    amber[800],
-    green[800],
-    cyan[800],
-    blueGrey[800],
-    deepPurple[800],
+    amber[700],
+    green[700],
+    cyan[600],
+    blueGrey[700],
+    deepPurple[700],
     blue[800]
 ];

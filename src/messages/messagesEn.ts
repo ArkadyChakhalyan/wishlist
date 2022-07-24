@@ -130,11 +130,8 @@ export const messagesEn = {
                 save: {
                     button: 'Save'
                 },
-                done: {
-                    button: {
-                        undone: 'Mark as done',
-                        done: 'Mark as undone'
-                    }
+                copy: {
+                    button: 'Copy to'
                 }
             }
         }

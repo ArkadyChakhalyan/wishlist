@@ -56,6 +56,7 @@ export const WishlistItemLink: FC<TWishlistItemLinkProps> = ({
             value={newLink}
             fullWidth
             size='small'
+            sx={{ pointerEvents: 'all' }}
         />
     );
 }

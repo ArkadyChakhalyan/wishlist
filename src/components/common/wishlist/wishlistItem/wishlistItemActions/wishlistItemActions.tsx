@@ -11,19 +11,16 @@ import {
     WISHLIST_ITEM_LINK_PLACEHOLDER,
     WISHLIST_ITEM_LINK_TOOLTIP_ADD,
     WISHLIST_ITEM_LINK_TOOLTIP_OPEN,
+    WISHLIST_ITEM_SETTINGS_COPY_BUTTON,
     WISHLIST_ITEM_SETTINGS_DELETE_BUTTON,
-    WISHLIST_ITEM_SETTINGS_SAVE_BUTTON,
-    WISHLIST_ITEM_SETTINGS_TOGGLE_DONE,
-    WISHLIST_ITEM_SETTINGS_TOGGLE_UNDONE
+    WISHLIST_ITEM_SETTINGS_SAVE_BUTTON
 } from "./constants";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
 export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
-    done,
     edit,
     link,
     onLinkChange,
-    onToggleDone,
     onDelete,
     onSave
 }) => {
@@ -89,8 +86,8 @@ export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
         px: edit ? 3 : 0,
         right: edit ? 0 : theme.spacing(),
         top: edit ? 'unset' : theme.spacing(),
-        bottom: edit ? theme.spacing(1) : 'unset',
-        pointerEvents: edit ? 'none' : 'all'
+        bottom: edit ? theme.spacing(2) : 'unset',
+        pointerEvents: 'none'
     };
 
     return (
@@ -100,38 +97,48 @@ export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
         >
             {
                 edit ?
-                    <>
-                        <Button
-                            onClick={onToggleDone}
-                            fullWidth
-                            sx={{ pointerEvents: 'all' }}
-                        >
-                            {
-                                done ? WISHLIST_ITEM_SETTINGS_TOGGLE_DONE : WISHLIST_ITEM_SETTINGS_TOGGLE_UNDONE
-                            }
-                        </Button>
-                        <Button
-                            onClick={onSave}
-                            fullWidth
-                            sx={{ pointerEvents: 'all' }}
-                        >
-                            {WISHLIST_ITEM_SETTINGS_SAVE_BUTTON}
-                        </Button>
+                    <Stack spacing={1} sx={{ width: 1 }}>
+                        <Stack direction='row' spacing={1}>
+                            <Button
+                                fullWidth
+                                sx={{ pointerEvents: 'all' }}
+                                variant='outlined'
+                            >
+                                {WISHLIST_ITEM_SETTINGS_COPY_BUTTON}
+                            </Button>
+                            <Button
+                                fullWidth
+                                sx={{ pointerEvents: 'all' }}
+                                variant='outlined'
+                            >
+                                {WISHLIST_ITEM_SETTINGS_COPY_BUTTON}
+                            </Button>
+                            <Button
+                                onClick={onSave}
+                                fullWidth
+                                sx={{ pointerEvents: 'all' }}
+                                variant='outlined'
+                            >
+                                {WISHLIST_ITEM_SETTINGS_SAVE_BUTTON}
+                            </Button>
+                        </Stack>
                         <Button
                             onClick={onDelete}
                             fullWidth
                             color='error'
+                            variant='contained'
                             sx={{ pointerEvents: 'all' }}
                         >
                             {WISHLIST_ITEM_SETTINGS_DELETE_BUTTON}
                         </Button>
-                    </>
+                    </Stack>
                     :
                     <>
                         {
                             link ?
                                 <Tooltip title={WISHLIST_ITEM_LINK_TOOLTIP_OPEN}>
                                     <IconButton
+                                        sx={{ pointerEvents: 'all' }}
                                         onClick={onLinkClick}
                                     >
                                         <LinkRoundedIcon />
@@ -140,6 +147,7 @@ export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
                                 :
                                 <Tooltip title={WISHLIST_ITEM_LINK_TOOLTIP_ADD}>
                                     <LinkButton
+                                        sx={{ pointerEvents: 'all' }}
                                         onClick={onAddLink}
                                     >
                                         <AddLinkRoundedIcon />
@@ -172,7 +180,10 @@ export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
                             />
                         </Popover>
                         <Tooltip title={WISHLIST_ITEM_DELETE_TOOLTIP}>
-                            <DeleteButton onClick={onDelete}>
+                            <DeleteButton
+                                onClick={onDelete}
+                                sx={{ pointerEvents: 'all' }}
+                            >
                                 <DeleteOutlineRoundedIcon />
                             </DeleteButton>
                         </Tooltip>

@@ -1,5 +1,5 @@
 import { TWishlistsItemButtonProps } from "./types";
-import { Avatar, ListItemButton, Stack, Typography } from "@mui/material";
+import { alpha, Avatar, ListItemButton, Stack, Typography } from "@mui/material";
 import React, { FC, useEffect, useRef, useState } from "react";
 import { WISHLIST_ICONS } from "../../../../../../common/wishlist/constants";
 import { theme } from "../../../../../../../styles/theme";
@@ -41,7 +41,10 @@ export const WishlistsItemButton: FC<TWishlistsItemButtonProps> = ({
         pl: 2,
         pr: folded ? 2 : 9,
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        '&:hover': {
+            background: 'none'
+        }
     };
 
     return (
