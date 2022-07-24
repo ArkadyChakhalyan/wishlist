@@ -1,5 +1,5 @@
 import { TWishlistProps } from "./types";
-import { FunctionComponent, useRef } from "react";
+import { FC, useRef } from "react";
 import { WishlistHeader } from "./wishlistHeader";
 import { WishlistItem } from "./wishlistItem";
 import { Stack } from "@mui/material";
@@ -7,7 +7,7 @@ import { AddItem } from "./addItem";
 import { theme } from "../../../styles/theme";
 import { useNavigate } from "react-router-dom";
 
-export const Wishlist: FunctionComponent<TWishlistProps> = ({
+export const Wishlist: FC<TWishlistProps> = ({
     wishlist
 }) => {
     const navigate = useNavigate();

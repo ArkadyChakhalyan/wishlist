@@ -1,12 +1,12 @@
 import { TWishlistsItemButtonProps } from "./types";
 import { Avatar, ListItemButton, Stack, Typography } from "@mui/material";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { WISHLIST_ICONS } from "../../../../../../common/wishlist/constants";
 import { theme } from "../../../../../../../styles/theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "../../../../../../../UI/tooltip/tooltip";
 
-export const WishlistsItemButton: FunctionComponent<TWishlistsItemButtonProps> = ({
+export const WishlistsItemButton: FC<TWishlistsItemButtonProps> = ({
     wishlist,
     folded
 }) => {

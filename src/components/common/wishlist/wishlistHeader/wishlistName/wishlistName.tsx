@@ -1,10 +1,11 @@
 import { TWishlistNameProps } from "./types";
 import { Avatar, Stack, TextField, Typography } from "@mui/material";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
 import { WISHLIST_COLORS, WISHLIST_ICONS } from "../../constants";
 import {
-    WISHLIST_ICONS_NAMES, WISHLIST_SETTINGS_COLOR_TOOLTIP,
+    WISHLIST_ICONS_NAMES,
+    WISHLIST_SETTINGS_COLOR_TOOLTIP,
     WISHLIST_SETTINGS_ICON_TOOLTIP,
     WISHLIST_SETTINGS_NAME_LABEL,
     WISHLIST_SETTINGS_NAME_PLACEHOLDER
@@ -23,7 +24,7 @@ import { EWishlistIcon } from "../../../../../store/reducers/wishlistsReducer/ty
 import { WishlistCounter } from "./wishlistCounter";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
-export const WishlistName: FunctionComponent<TWishlistNameProps> = ({
+export const WishlistName: FC<TWishlistNameProps> = ({
     wishlist,
     edit
 }) => {

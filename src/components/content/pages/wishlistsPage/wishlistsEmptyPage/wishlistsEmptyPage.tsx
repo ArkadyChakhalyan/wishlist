@@ -3,12 +3,12 @@ import { alpha } from "@mui/material";
 import { WISHLISTS_PAGE_EMPTY_CREATE_TEXT } from "./constants";
 import PlaylistAddRoundedIcon from '@mui/icons-material/PlaylistAddRounded';
 import { theme } from "../../../../../styles/theme";
-import { FunctionComponent, useState } from "react";
+import { FC, useState } from "react";
 import { CreateWishlistModal } from "./createWishlistModal";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
 import { Empty } from "../../../../common/empty";
 
-export const WishlistsEmptyPage: FunctionComponent<TWishlistsEmptyPageProps> = () => {
+export const WishlistsEmptyPage: FC<TWishlistsEmptyPageProps> = () => {
     const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
 
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {

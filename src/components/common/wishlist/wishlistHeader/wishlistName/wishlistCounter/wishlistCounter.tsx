@@ -1,12 +1,12 @@
 import { EWishlistCounter, TWishlistCounterProps } from "./types";
 import { Box, MenuItem, Stack, TextField, Typography } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { editWishlistCounterAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { WISHLIST_COUNTER_OPTIONS, WISHLIST_SETTINGS_COUNTER_LABEL } from "./constants";
 import { theme } from "../../../../../../styles/theme";
 
-export const WishlistCounter: FunctionComponent<TWishlistCounterProps> = ({
+export const WishlistCounter: FC<TWishlistCounterProps> = ({
     id,
     items,
     type,
@@ -55,7 +55,7 @@ export const WishlistCounter: FunctionComponent<TWishlistCounterProps> = ({
                             ))
                         }
                     </TextField>
-                    : type !== EWishlistCounter.NONE && !!totalItems &&
+                    : type !== EWishlistCounter.NONE && !!totalItems && (items.length === 1 ? items[0].name : true) &&
                     <Box sx={boxShadow}>
                         <Typography
                             fontWeight={600}

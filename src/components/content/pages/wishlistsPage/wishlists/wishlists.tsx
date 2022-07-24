@@ -1,7 +1,7 @@
 import { TWishlistsProps } from "./types";
 import { alpha, Box, Button, IconButton, List } from "@mui/material";
 import { theme } from "../../../../../styles/theme";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { WishlistsItem } from "./wishlistsItem";
 import { WISHLISTS_CREATE_BUTTON } from "../constants";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
-export const Wishlists: FunctionComponent<TWishlistsProps> = ({
+export const Wishlists: FC<TWishlistsProps> = ({
     wishlists,
     folded
 }) => {

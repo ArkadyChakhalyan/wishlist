@@ -2,14 +2,14 @@ import { alpha, IconButton, Stack, Typography } from "@mui/material";
 import { WISHLISTS_FOLD_TOOLTIP, WISHLISTS_TITLE, WISHLISTS_UNFOLD_TOOLTIP } from "./constants";
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import UnfoldLessRoundedIcon from '@mui/icons-material/UnfoldLessRounded';
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { toggleFoldedAC } from "../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
 import { TWishlistsHeaderProps } from "./types";
 import { theme } from "../../../../../../styles/theme";
 import { Tooltip } from "../../../../../../UI/tooltip/tooltip";
 
-export const WishlistsHeader: FunctionComponent<TWishlistsHeaderProps> = ({
+export const WishlistsHeader: FC<TWishlistsHeaderProps> = ({
     folded
 }) => {
     const dispatch = useDispatch();

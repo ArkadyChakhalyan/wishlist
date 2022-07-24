@@ -1,6 +1,6 @@
 import { TWishlistItemNameProps } from "./types";
 import { Button, Stack, TextField, Typography } from "@mui/material";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { theme } from "../../../../../styles/theme";
 import { WISHLIST_ITEM_NAME_ADD_BUTTON, WISHLIST_ITEM_NAME_LABEL, WISHLIST_ITEM_NAME_PLACEHOLDER } from "./constants";
 import {
@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
-export const WishlistItemName: FunctionComponent<TWishlistItemNameProps> = ({
+export const WishlistItemName: FC<TWishlistItemNameProps> = ({
     wishlistId,
     itemId,
     name,

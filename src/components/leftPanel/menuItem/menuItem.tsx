@@ -1,11 +1,11 @@
 import { TMenuItemProps } from "./types";
 import { alpha, Badge, IconButton, IconButtonProps, styled } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { theme } from "../../../styles/theme";
 import { Link } from "react-router-dom";
 import { Tooltip } from "../../../UI/tooltip/tooltip";
 
-export const MenuItem: FunctionComponent<TMenuItemProps> = ({
+export const MenuItem: FC<TMenuItemProps> = ({
     active,
     icon,
     notifications,

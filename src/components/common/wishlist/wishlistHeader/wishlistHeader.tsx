@@ -1,6 +1,6 @@
 import { TWishlistHeaderProps } from "./types";
 import { alpha, IconButton, Stack } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { theme } from "../../../../styles/theme";
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
@@ -10,7 +10,7 @@ import { WishlistSettings } from "./wishlistSettings";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "../../../../UI/tooltip/tooltip";
 
-export const WishlistHeader: FunctionComponent<TWishlistHeaderProps> = ({
+export const WishlistHeader: FC<TWishlistHeaderProps> = ({
     wishlist
 }) => {
     const navigate = useNavigate();

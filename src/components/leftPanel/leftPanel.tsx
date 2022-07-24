@@ -1,13 +1,13 @@
 import { TLeftPanelProps } from "./types";
 import { Stack, styled } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { LEFT_PANEL_MENU } from "./constants";
 import CardGiftcardRoundedIcon from '@mui/icons-material/CardGiftcardRounded';
 import { MenuItem } from "./menuItem";
 import { useLocation } from "react-router-dom";
 import { theme } from "../../styles/theme";
 
-export const LeftPanel: FunctionComponent<TLeftPanelProps> = () => {
+export const LeftPanel: FC<TLeftPanelProps> = () => {
     const location = useLocation();
 
     return (

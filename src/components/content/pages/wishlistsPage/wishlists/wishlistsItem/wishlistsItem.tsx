@@ -1,10 +1,10 @@
 import { TWishlistsItemProps } from "./types";
 import { ListItem } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { WishlistsItemActions } from "./wishlistItemActions";
 import { WishlistsItemButton } from "./wishlistItemButton";
 
-export const WishlistsItem: FunctionComponent<TWishlistsItemProps> = ({
+export const WishlistsItem: FC<TWishlistsItemProps> = ({
     wishlist,
     folded
 }) => {

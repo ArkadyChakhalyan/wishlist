@@ -1,8 +1,8 @@
 import { TWishlistFavoriteProps } from "./types"
 import { yellow } from "@mui/material/colors";
 import { toggleWishlistFavoriteAC } from "../../../store/reducers/wishlistsReducer/wishlistsReducer";
-import { IconButton, Typography } from "@mui/material";
-import { FunctionComponent } from "react";
+import { IconButton } from "@mui/material";
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { WISHLIST_FAVORITE_ADD_TOOLTIP, WISHLIST_FAVORITE_REMOVE_TOOLTIP } from "./constants";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
@@ -11,7 +11,7 @@ import { getWishlistFavorite } from "../../../store/reducers/wishlistsReducer/se
 import { IAppState } from "../../../store/types";
 import { Tooltip } from "../../../UI/tooltip/tooltip";
 
-export const WishlistFavorite: FunctionComponent<TWishlistFavoriteProps> = ({
+export const WishlistFavorite: FC<TWishlistFavoriteProps> = ({
     id,
     sx
 }) => {

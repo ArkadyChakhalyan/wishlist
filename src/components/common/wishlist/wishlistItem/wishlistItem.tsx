@@ -1,6 +1,6 @@
 import { TWishlistItemProps } from "./types";
 import { alpha, Checkbox, Paper, Stack, styled } from "@mui/material";
-import React, { FunctionComponent, useRef } from "react";
+import React, { FC, useRef } from "react";
 import { theme } from "../../../../styles/theme";
 import { useDispatch } from "react-redux";
 import {
@@ -13,7 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { WishlistItemActions } from "./wishlistItemActions";
 import { WishlistItemLink } from "./wishlistItemLink";
 
-export const WishlistItem: FunctionComponent<TWishlistItemProps> = ({
+export const WishlistItem: FC<TWishlistItemProps> = ({
     wishlistId,
     item
 }) => {

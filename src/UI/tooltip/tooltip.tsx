@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { Tooltip as MUITooltip, TooltipProps, Typography } from "@mui/material";
 
-export const Tooltip: FunctionComponent<TooltipProps> = (props) => (
+export const Tooltip: FC<TooltipProps> = (props) => (
     <MUITooltip
         {...props}
         title={

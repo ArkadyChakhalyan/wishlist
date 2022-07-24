@@ -18,10 +18,10 @@ import {
     addWishlistAC,
     deleteWishlistAC
 } from "../../../../../../../../store/reducers/wishlistsReducer/wishlistsReducer";
-import { FunctionComponent } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const WishlistsItemMenu: FunctionComponent<TWishlistsItemMenuProps> = ({
+export const WishlistsItemMenu: FC<TWishlistsItemMenuProps> = ({
     anchor,
     id,
     onClose

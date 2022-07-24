@@ -1,15 +1,15 @@
 import { TWishlistItemActionsProps } from "./types";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { Button, IconButton, Popover, Stack, styled, TextField } from "@mui/material";
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 import AddLinkRoundedIcon from '@mui/icons-material/AddLinkRounded';
 import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
 import { theme } from "../../../../../styles/theme";
 import {
+    WISHLIST_ITEM_DELETE_TOOLTIP,
     WISHLIST_ITEM_LINK_LABEL,
     WISHLIST_ITEM_LINK_PLACEHOLDER,
     WISHLIST_ITEM_LINK_TOOLTIP_ADD,
-    WISHLIST_ITEM_DELETE_TOOLTIP,
     WISHLIST_ITEM_LINK_TOOLTIP_OPEN,
     WISHLIST_ITEM_SETTINGS_DELETE_BUTTON,
     WISHLIST_ITEM_SETTINGS_SAVE_BUTTON,
@@ -18,7 +18,7 @@ import {
 } from "./constants";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
-export const WishlistItemActions: FunctionComponent<TWishlistItemActionsProps> = ({
+export const WishlistItemActions: FC<TWishlistItemActionsProps> = ({
     done,
     edit,
     link,

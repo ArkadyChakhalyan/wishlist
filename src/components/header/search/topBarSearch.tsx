@@ -1,10 +1,10 @@
 import { TTopBarSearchProps } from "./types";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { alpha, InputBase, styled } from "@mui/material";
 import { HEADER_TOP_BAR_SEARCH_PLACEHOLDER } from "./constants";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 
-export const TopBarSearch: FunctionComponent<TTopBarSearchProps> = () => {
+export const TopBarSearch: FC<TTopBarSearchProps> = () => {
     return (
         <Search>
             <SearchIconWrapper>

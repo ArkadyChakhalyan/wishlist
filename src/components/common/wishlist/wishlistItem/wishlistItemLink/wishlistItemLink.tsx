@@ -1,9 +1,9 @@
 import { TWishlistItemLinkProps } from "./types";
 import { TextField } from "@mui/material";
-import React, { FunctionComponent, useState } from "react";
+import React, { FC, useState } from "react";
 import { WISHLIST_ITEM_LINK_LABEL, WISHLIST_ITEM_LINK_PLACEHOLDER } from "./constants";
 
-export const WishlistItemLink: FunctionComponent<TWishlistItemLinkProps> = ({
+export const WishlistItemLink: FC<TWishlistItemLinkProps> = ({
     link,
     onLinkChange,
     onClose

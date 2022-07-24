@@ -1,6 +1,6 @@
 import { TAddItemProps } from "./types";
 import { alpha, Box, IconButton, styled } from "@mui/material";
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { theme } from "../../../../styles/theme";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { ADD_WISHLIST_ITEM_BUTTON, ADD_WISHLIST_ITEM_TEXT, ADD_WISHLIST_ITEM_TOOLTIP } from "./constants";
@@ -11,7 +11,7 @@ import { addWishlistItemAC } from "../../../../store/reducers/wishlistsReducer/w
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "../../../../UI/tooltip/tooltip";
 
-export const AddItem: FunctionComponent<TAddItemProps> = ({
+export const AddItem: FC<TAddItemProps> = ({
     wishlistId,
     isEmpty
 }) => {

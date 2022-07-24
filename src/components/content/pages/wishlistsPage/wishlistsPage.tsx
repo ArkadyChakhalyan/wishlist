@@ -8,10 +8,10 @@ import { Wishlists } from "./wishlists";
 import { theme } from "../../../../styles/theme";
 import { useParams } from "react-router-dom";
 import { WISHLISTS_EMPTY_TEXT } from "./constants";
-import { FunctionComponent } from "react";
+import { FC } from "react";
 import { getFolded } from "../../../../store/reducers/wishlistsReducer/selectors/getFolded";
 
-export const WishlistsPage: FunctionComponent<TWishlistsPageProps> = () => {
+export const WishlistsPage: FC<TWishlistsPageProps> = () => {
     const wishlists = useSelector(getWishlists);
     const folded = useSelector(getFolded);
     const params = useParams();

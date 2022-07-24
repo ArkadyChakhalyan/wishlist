@@ -1,9 +1,9 @@
 import { TWishlistSettingsProps } from "./types";
 import { Stack } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 
-export const WishlistSettings: FunctionComponent<TWishlistSettingsProps> = ({
+export const WishlistSettings: FC<TWishlistSettingsProps> = ({
     wishlist
 }) => {
     const dispatch = useDispatch();

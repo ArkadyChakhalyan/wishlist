@@ -1,11 +1,11 @@
 import { TAccountProps } from "./types";
 import { alpha, Avatar, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import React, { FunctionComponent, useState } from "react";
+import React, { FC, useState } from "react";
 import { HEADER_ACCOUNT_SETTINGS_ACCOUNT, HEADER_ACCOUNT_SETTINGS_LOGOUT, HEADER_ACCOUNT_TOOLTIP } from "./constants";
 import { theme } from "../../../styles/theme";
 import { Tooltip } from "../../../UI/tooltip/tooltip";
 
-export const Account: FunctionComponent<TAccountProps> = () => {
+export const Account: FC<TAccountProps> = () => {
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
 
     const onOpen = (e: React.MouseEvent<HTMLElement>) => {

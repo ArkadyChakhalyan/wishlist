@@ -1,12 +1,12 @@
 import { TWishlistsItemActionsProps } from "./types";
 import { IconButton, ListItemSecondaryAction, Stack } from "@mui/material";
-import React, { FunctionComponent, useState } from "react";
+import React, { FC, useState } from "react";
 import { WishlistsItemMenu } from "./wishlistsItemMenu";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import { theme } from "../../../../../../../styles/theme";
 import { WishlistFavorite } from "../../../../../../common/wishlistFavorite";
 
-export const WishlistsItemActions: FunctionComponent<TWishlistsItemActionsProps> = ({
+export const WishlistsItemActions: FC<TWishlistsItemActionsProps> = ({
     id,
 }) => {
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);

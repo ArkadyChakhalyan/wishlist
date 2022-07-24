@@ -1,11 +1,11 @@
 import { TContentProps } from "./types";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import { theme } from "../../styles/theme";
 import { WishlistsPage } from "./pages/wishlistsPage";
 
-export const Content: FunctionComponent<TContentProps> = () => {
+export const Content: FC<TContentProps> = () => {
     return (
         <Box
             sx={{

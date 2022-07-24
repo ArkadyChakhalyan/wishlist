@@ -1,8 +1,8 @@
 import { TEmptyProps } from "./types";
 import { Button, Stack, Typography } from "@mui/material";
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 
-export const Empty: FunctionComponent<TEmptyProps> = ({
+export const Empty: FC<TEmptyProps> = ({
     text,
     buttonText,
     icon,

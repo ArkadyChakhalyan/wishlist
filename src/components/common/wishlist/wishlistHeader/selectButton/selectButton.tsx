@@ -1,10 +1,10 @@
 import { ESelectType, TSelectButtonProps } from "./types";
-import React, { FunctionComponent, useState } from "react";
+import React, { FC, useState } from "react";
 import { alpha, Box, IconButton, IconButtonProps, Popover, Stack, styled } from "@mui/material";
 import { theme } from "../../../../../styles/theme";
 import { Tooltip } from "../../../../../UI/tooltip/tooltip";
 
-export const SelectButton: FunctionComponent<TSelectButtonProps> = ({
+export const SelectButton: FC<TSelectButtonProps> = ({
     options,
     type,
     icons,
